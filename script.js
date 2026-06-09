@@ -6,6 +6,7 @@ const projects = [
     type: "2D Roguelike Shooter",
     role: "毕业设计 / 核心玩法与工程系统",
     period: "Unity 2022 LTS",
+    award: "核心作品",
     summary:
       "2D 俯视角 Roguelike 动作射击游戏。玩家在程序化生成地牢中使用弓箭、水/冰元素技能与随机增益构筑流派，挑战五大关卡和 Boss。",
     contribution:
@@ -16,6 +17,18 @@ const projects = [
       "ScriptableObject 拆分角色、敌人、技能、掉落和关卡难度数据。"
     ],
     tags: ["Unity", "C#", "Roguelike", "ScriptableObject", "Dungeon", "Combat"],
+    stack: [
+      ["Engine", "Unity 2022.3 LTS, 2D Physics, Animator"],
+      ["Architecture", "MVC, 状态机, 事件总线, 对象池"],
+      ["Content", "Edgar.Unity 程序化地牢, ScriptableObject 数据资产"],
+      ["Feedback", "Cinemachine, Post Processing, 粒子特效, 触觉反馈"]
+    ],
+    systems: [
+      "水/冰元素状态系统：湿润、冰标记、冻结、易伤与解冻减速。",
+      "Roguelike 增益系统：属性、元素、续航三类构筑方向。",
+      "关卡推进系统：5 大关 x 5 小关，动态难度缩放与 Boss 阶段。",
+      "数据驱动工作流：CSV 到 ScriptableObject，便于调参和平衡。"
+    ],
     image: "",
     gallery: [],
     link: "https://github.com/Cllent7/ElementKnight"
@@ -27,6 +40,7 @@ const projects = [
     type: "VR Psychological Support System",
     role: "VR 交互 / AI 语音闭环",
     period: "PICO / Unity VR",
+    award: "AI VR",
     summary:
       "Unity + VR 沉浸式心理支持系统，通过虚拟空间帮助用户进行情绪调节、压力释放和正向引导。",
     contribution:
@@ -37,6 +51,18 @@ const projects = [
       "重构识别、流式请求、合成、播放异步链路，压缩交互延迟。"
     ],
     tags: ["Unity VR", "PICO", "Deepseek", "STT", "TTS", "AI"],
+    stack: [
+      ["Engine", "Unity VR, PICO 设备适配, XR 交互"],
+      ["AI", "Deepseek LLM, Prompt 角色设定, 流式对话"],
+      ["Voice", "科大讯飞 STT/TTS, 语音输入输出闭环"],
+      ["Performance", "异步链路, XAsset 加载, 内存峰值优化"]
+    ],
+    systems: [
+      "AI 虚拟心理导师：感知、认知、表达的多模态闭环。",
+      "语音交互管线：识别、请求、合成、播放、口型同步。",
+      "情绪释放空间：拳击、节奏互动、空间绘画等压力释放玩法。",
+      "正念放松空间：冥想、呼吸引导与自然沉浸场景。"
+    ],
     image:
       "https://github.com/user-attachments/assets/366dbe98-d5ad-48b2-830a-fb8512dacf67",
     gallery: [
@@ -53,6 +79,7 @@ const projects = [
     type: "3D Physics Simulation",
     role: "物理仿真 / 教育交互",
     period: "PC / Unity 3D",
+    award: "教育仿真",
     summary:
       "面向初高中物理课堂的 3D 交互式综合物理实验仿真软件，将抽象、危险或难以实操的实验做成可操作体验。",
     contribution:
@@ -63,6 +90,18 @@ const projects = [
       "面向课堂教学场景设计，将公式理解转化为可交互验证。"
     ],
     tags: ["Unity 3D", "C#", "Physics", "FSM", "Education", "Simulation"],
+    stack: [
+      ["Engine", "Unity 3D, Rigidbody, Collider, Physics Material"],
+      ["Simulation", "浮力算法, 热学模拟, 自由落体, 摩擦力验证"],
+      ["Flow", "FSM, 任务接取, 传送门, 实验舱验证"],
+      ["Delivery", "PC 端交互, 教育场景, Git 协同"]
+    ],
+    systems: [
+      "浮力系统：实时计算排开体积并逐帧施加浮力。",
+      "热学系统：燃烧器、热气球、密度变化与升力反馈。",
+      "实验舱流程：大厅、任务、传送门和实验验证闭环。",
+      "教学反馈：把公式理解转化成可观察、可操作的互动结果。"
+    ],
     image:
       "https://github.com/user-attachments/assets/c3984317-0ead-4581-bdf4-6362aaa4f358",
     gallery: [
@@ -79,6 +118,7 @@ const projects = [
     type: "72h GameJam Puzzle Game",
     role: "副程序 / 关卡机制 / UI 框架",
     period: "省级优胜奖",
+    award: "省级优胜奖",
     summary:
       "72 小时 GameJam 作品，2D 像素风非对称双人合作剧情解谜。两位角色围绕“力”与“智”的差异协作逃离养老院。",
     contribution:
@@ -89,6 +129,18 @@ const projects = [
       "72 小时高压开发中完成机制验证、协作排期和快速迭代。"
     ],
     tags: ["Unity", "C#", "GameJam", "Puzzle", "UI", "Teamwork"],
+    stack: [
+      ["Engine", "Unity 2D, Pixel Art, UGUI"],
+      ["Gameplay", "双人合作, 非对称能力, 多节点机关联动"],
+      ["Architecture", "跨组件状态同步, 关卡触发器, UI 框架"],
+      ["Production", "72 小时 GameJam, Git 协同, 快速迭代"]
+    ],
+    systems: [
+      "力与智双角色机制：一个负责重物与平台，一个负责按钮与精细机关。",
+      "第四、第五关机制：多节点触发、同步锁和白盒验证。",
+      "UI 框架：极限开发中保证流程提示和交互稳定。",
+      "团队协作：程序、策划、美术快速拆解需求并完成交付。"
+    ],
     image:
       "https://github.com/user-attachments/assets/8eef7d58-4fc7-467b-bc23-32d1caabfa74",
     gallery: [
@@ -104,7 +156,8 @@ const projects = [
     repo: "The-Justice-Raid-of-the-Abandoned-Factory",
     type: "3D FPS Survival Shooter",
     role: "个人独立开发 / 架构与优化",
-    period: "国赛三等奖",
+    period: "CMIT 国赛三等奖",
+    award: "CMIT 国赛三等奖",
     summary:
       "Unity 3D 第一人称生存射击游戏。玩家在废弃工厂中利用有限资源突破僵尸围堵，完成硬核生存挑战。",
     contribution:
@@ -115,6 +168,18 @@ const projects = [
       "对象池管理子弹、僵尸、补给和特效，保障测试设备稳定 60FPS。"
     ],
     tags: ["Unity", "C#", "FPS", "MVC", "NavMesh", "Object Pool"],
+    stack: [
+      ["Engine", "Unity 3D, Physics, Raycast, UGUI"],
+      ["AI", "NavMesh Agent, 僵尸状态机, 巡逻/发现/追击/攻击"],
+      ["Architecture", "MVC 分层, 模块解耦, 战斗 UI 数据同步"],
+      ["Optimization", "多类型对象池, Instantiate/Destroy 控制, 60FPS"]
+    ],
+    systems: [
+      "射击系统：物理弹道、碰撞反馈、射线拾取和补给交互。",
+      "僵尸 AI：巡逻、发现、追击、攻击的完整状态流。",
+      "资源系统：有限弹药、医疗包和道具补给形成生存压力。",
+      "性能系统：子弹、僵尸、补给和特效统一对象池调度。"
+    ],
     image:
       "https://github.com/user-attachments/assets/013be876-ab5b-4ae3-b7a3-772ca88cd58b",
     gallery: [
@@ -134,6 +199,7 @@ const views = {
 
 const workGrid = document.querySelector("#workGrid");
 const detailPanel = document.querySelector("#detailPanel");
+const cardOrder = ["vr-room", "physics-illusion", "element-knight", "wisdom-strength", "justice-raid"];
 
 function activateView(name) {
   Object.values(views).forEach((view) => view.classList.remove("is-active"));
@@ -170,17 +236,19 @@ function galleryMarkup(project) {
 
 function renderWorkCards() {
   workGrid.innerHTML = projects
+    .slice()
+    .sort((a, b) => cardOrder.indexOf(a.id) - cardOrder.indexOf(b.id))
     .map((project, index) => {
       const background = project.image ? `url(${project.image})` : "none";
       const placeholderClass = project.image ? "" : "placeholder-card";
 
       return `
-        <button class="work-card ${placeholderClass}" type="button" data-project="${project.id}" style="--card-bg:${background}">
+        <button class="work-card ${placeholderClass} ${project.id === "element-knight" ? "core-card" : ""}" type="button" data-project="${project.id}" style="--card-bg:${background}">
           <span class="work-card-index">${String(index + 1).padStart(2, "0")}</span>
           <div class="work-card-content">
             <span class="work-card-type">${project.type}</span>
             <h2>${project.title}</h2>
-            <p>${project.role}</p>
+            <p>${project.award} · ${project.role}</p>
             <span class="hover-hint">查看项目详情 <span>Enter</span></span>
           </div>
         </button>
@@ -217,6 +285,7 @@ function renderDetail(project) {
           <span>${project.type}</span>
           <span>${project.role}</span>
           <span>${project.period}</span>
+          <span>${project.award}</span>
         </div>
         <div class="tag-row">${renderTags(project.tags)}</div>
         <a class="repo-link" href="${project.link}" target="_blank" rel="noreferrer">打开 GitHub README</a>
@@ -232,6 +301,23 @@ function renderDetail(project) {
       </section>
 
       <section class="detail-section">
+        <h3>技术栈与系统拆解</h3>
+        <div class="stack-grid">
+          ${project.stack
+            .map(
+              ([label, value]) => `
+                <div class="stack-item">
+                  <span>${label}</span>
+                  <strong>${value}</strong>
+                </div>
+              `
+            )
+            .join("")}
+        </div>
+        <ul>${project.systems.map((item) => `<li>${item}</li>`).join("")}</ul>
+      </section>
+
+      <section class="detail-section media-section">
         <h3>视频与图片</h3>
         <div class="video-placeholder">
           <span class="play-core"></span>
