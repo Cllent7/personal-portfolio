@@ -12,7 +12,7 @@
 ## 最简单发布流程
 
 1. 登录 GitHub。
-2. 新建仓库，建议命名为 `unity-portfolio`。
+2. 新建仓库，建议命名为 `personal-portfolio`。
 3. 把当前文件夹里的文件全部上传到仓库根目录：
    - `index.html`
    - `styles.css`
@@ -28,7 +28,7 @@
 发布成功后，GitHub 会给你一个 HTTPS 地址：
 
 ```text
-https://你的GitHub用户名.github.io/unity-portfolio/
+https://你的GitHub用户名.github.io/personal-portfolio/
 ```
 
 这个地址是公网地址，远程面试官可以直接打开，也可以扫码打开。
@@ -38,7 +38,7 @@ https://你的GitHub用户名.github.io/unity-portfolio/
 发布成功后，在本目录运行：
 
 ```powershell
-.\make-public-qr.ps1 -Url "https://你的GitHub用户名.github.io/unity-portfolio/"
+.\make-public-qr.ps1 -Url "https://你的GitHub用户名.github.io/personal-portfolio/"
 ```
 
 生成的 `public-qr.png` 就是公网二维码。

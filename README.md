@@ -4,7 +4,7 @@
 
 ## 推荐发布方式：GitHub Pages
 
-1. 在 GitHub 新建一个公开仓库，例如 `unity-portfolio`。
+1. 在 GitHub 新建一个公开仓库，例如 `personal-portfolio`。
 2. 上传本目录中的全部文件到仓库根目录。
 3. 打开仓库的 `Settings` -> `Pages`。
 4. 在 `Build and deployment` 中选择：
@@ -15,7 +15,7 @@
 6. 访问 GitHub 显示的 Pages 地址，通常是：
 
 ```text
-https://你的GitHub用户名.github.io/unity-portfolio/
+https://你的GitHub用户名.github.io/personal-portfolio/
 ```
 
 如果仓库名是 `你的GitHub用户名.github.io`，地址通常是：
@@ -29,7 +29,7 @@ https://你的GitHub用户名.github.io/
 发布成功后，在 PowerShell 里运行：
 
 ```powershell
-.\make-public-qr.ps1 -Url "https://你的GitHub用户名.github.io/unity-portfolio/"
+.\make-public-qr.ps1 -Url "https://你的GitHub用户名.github.io/personal-portfolio/"
 ```
 
 脚本会生成：
