@@ -70,7 +70,7 @@ $QrHtml = @"
     <main>
       <h1>扫码打开作品集</h1>
       <img src="$QrUrl" alt="作品集访问二维码" />
-      <p>这个二维码只用于本地预览。远程面试请使用 GitHub Pages 公网地址生成二维码。</p>
+      <p>这个二维码只用于本地预览。远程面试请使用 Vercel 公网地址生成二维码。</p>
       <p><a href="$Url">$Url</a></p>
     </main>
   </body>

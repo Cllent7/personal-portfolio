@@ -1,27 +1,19 @@
-# Unity Developer Portfolio
+# Personal Portfolio
 
-这是一个静态作品集网站，可以直接发布到 GitHub Pages、Cloudflare Pages、Vercel 或 Netlify。
+这是一个个人作品集静态网站，推荐通过 Vercel 从 GitHub 仓库部署。
 
-## 推荐发布方式：GitHub Pages
+## 推荐发布方式：Vercel
 
-1. 在 GitHub 新建一个公开仓库，例如 `personal-portfolio`。
-2. 上传本目录中的全部文件到仓库根目录。
-3. 打开仓库的 `Settings` -> `Pages`。
-4. 在 `Build and deployment` 中选择：
-   - Source: `Deploy from a branch`
-   - Branch: `main`
-   - Folder: `/ (root)`
-5. 保存后等待 1-3 分钟。
-6. 访问 GitHub 显示的 Pages 地址，通常是：
+1. 在 GitHub 准备一个仓库，例如 `personal-portfolio`。
+2. 把本目录中的全部文件提交并推送到仓库根目录。
+3. 打开 Vercel，点击 `Add New` -> `Project`。
+4. 选择 GitHub 仓库 `personal-portfolio`。
+5. Framework Preset 选择 `Other`，Build Command 和 Output Directory 都留空。
+6. 点击 `Deploy`。
+7. 发布成功后，Vercel 会给出公网地址，通常类似：
 
 ```text
-https://你的GitHub用户名.github.io/personal-portfolio/
-```
-
-如果仓库名是 `你的GitHub用户名.github.io`，地址通常是：
-
-```text
-https://你的GitHub用户名.github.io/
+https://personal-portfolio.vercel.app/
 ```
 
 ## 生成公网二维码
@@ -29,7 +21,7 @@ https://你的GitHub用户名.github.io/
 发布成功后，在 PowerShell 里运行：
 
 ```powershell
-.\make-public-qr.ps1 -Url "https://你的GitHub用户名.github.io/personal-portfolio/"
+.\make-public-qr.ps1 -Url "https://personal-portfolio.vercel.app/"
 ```
 
 脚本会生成：
@@ -44,3 +36,5 @@ https://你的GitHub用户名.github.io/
 ```powershell
 .\serve.ps1
 ```
+
+更详细的 Vercel 发布步骤见 `DEPLOY_VERCEL.md`。
