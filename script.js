@@ -203,6 +203,7 @@ const views = {
 };
 
 const workGrid = document.querySelector("#workGrid");
+const workViewport = document.querySelector("#workViewport");
 const detailPanel = document.querySelector("#detailPanel");
 const cardOrder = ["vr-room", "physics-illusion", "element-knight", "wisdom-strength", "justice-raid"];
 const transitionFlare = document.querySelector("#transitionFlare");
@@ -249,6 +250,20 @@ function galleryMarkup(project) {
     .join("");
 }
 
+function videoMarkup(project) {
+  if (project.video) {
+    return `<video class="project-video" src="${project.video}" controls playsinline preload="metadata"></video>`;
+  }
+
+  return `
+    <div class="video-placeholder">
+      <span class="play-core"></span>
+      <strong>视频坑位</strong>
+      <small>后续替换为 ${project.title} 的演示视频</small>
+    </div>
+  `;
+}
+
 function renderWorkCards() {
   const orderedProjects = projects
     .slice()
@@ -265,8 +280,8 @@ function renderWorkCards() {
       return `
         <button class="work-card ${placeholderClass} ${priorityClass}" type="button" data-project="${project.id}" style="--card-bg:${background}">
           <span class="work-card-index">${displayIndex}</span>
-          ${project.priority === "core" ? '<span class="priority-ribbon">Core</span>' : ""}
-          ${project.priority === "featured" ? '<span class="priority-ribbon featured-ribbon">Featured</span>' : ""}
+          ${project.priority === "core" ? '<span class="priority-ribbon">核心项目</span>' : ""}
+          ${project.priority === "featured" ? '<span class="priority-ribbon featured-ribbon">重点作品</span>' : ""}
           <div class="work-card-content">
             <span class="work-card-type">${project.type}</span>
             <h2>${project.title}</h2>
@@ -288,6 +303,10 @@ function renderWorkCards() {
     });
 
     card.addEventListener("click", () => {
+      if (dragDistance > 8) {
+        return;
+      }
+
       const project = projects.find((item) => item.id === card.dataset.project);
       renderDetail(project);
       activateView("detail", card);
@@ -352,11 +371,7 @@ function renderDetail(project) {
 
       <section class="detail-section media-section">
         <h3>视频与图片</h3>
-        <div class="video-placeholder">
-          <span class="play-core"></span>
-          <strong>视频坑位</strong>
-          <small>后续替换为 ${project.title} 的演示视频</small>
-        </div>
+        ${videoMarkup(project)}
         <div class="gallery-strip">${galleryMarkup(project)}</div>
       </section>
     </div>
@@ -374,6 +389,108 @@ window.addEventListener("keydown", (event) => {
 });
 
 renderWorkCards();
+
+let carouselOffset = 0;
+let carouselHalfWidth = 0;
+let lastCarouselTime = 0;
+let isDraggingCarousel = false;
+let isHoveringCarousel = false;
+let dragStartX = 0;
+let dragStartOffset = 0;
+let dragDistance = 0;
+let carouselFrame = 0;
+
+function normalizeCarouselOffset() {
+  if (carouselHalfWidth <= 0) {
+    return;
+  }
+
+  while (carouselOffset > 0) {
+    carouselOffset -= carouselHalfWidth;
+  }
+
+  while (carouselOffset <= -carouselHalfWidth) {
+    carouselOffset += carouselHalfWidth;
+  }
+}
+
+function measureCarousel() {
+  carouselHalfWidth = workGrid.scrollWidth / 2;
+  normalizeCarouselOffset();
+  workGrid.style.transform = `translate3d(${carouselOffset}px, 0, 0)`;
+}
+
+function animateCarousel(time) {
+  if (!lastCarouselTime) {
+    lastCarouselTime = time;
+  }
+
+  const delta = time - lastCarouselTime;
+  lastCarouselTime = time;
+
+  if (!isDraggingCarousel && !isHoveringCarousel) {
+    carouselOffset -= delta * 0.028;
+    normalizeCarouselOffset();
+    workGrid.style.transform = `translate3d(${carouselOffset}px, 0, 0)`;
+  }
+
+  carouselFrame = requestAnimationFrame(animateCarousel);
+}
+
+function getPointerX(event) {
+  return event.touches ? event.touches[0].clientX : event.clientX;
+}
+
+function startCarouselDrag(event) {
+  isDraggingCarousel = true;
+  dragStartX = getPointerX(event);
+  dragStartOffset = carouselOffset;
+  dragDistance = 0;
+  workViewport.classList.add("is-dragging");
+}
+
+function moveCarouselDrag(event) {
+  if (!isDraggingCarousel) {
+    return;
+  }
+
+  const currentX = getPointerX(event);
+  dragDistance = Math.max(dragDistance, Math.abs(currentX - dragStartX));
+  carouselOffset = dragStartOffset + currentX - dragStartX;
+  normalizeCarouselOffset();
+  workGrid.style.transform = `translate3d(${carouselOffset}px, 0, 0)`;
+}
+
+function endCarouselDrag() {
+  isDraggingCarousel = false;
+  workViewport.classList.remove("is-dragging");
+}
+
+workViewport.addEventListener("mouseenter", () => {
+  isHoveringCarousel = true;
+});
+
+workViewport.addEventListener("mouseleave", () => {
+  isHoveringCarousel = false;
+  endCarouselDrag();
+});
+
+workViewport.addEventListener("pointerdown", (event) => {
+  if (event.button !== 0) {
+    return;
+  }
+
+  workViewport.setPointerCapture(event.pointerId);
+  startCarouselDrag(event);
+});
+
+workViewport.addEventListener("pointermove", moveCarouselDrag);
+workViewport.addEventListener("pointerup", endCarouselDrag);
+workViewport.addEventListener("pointercancel", endCarouselDrag);
+
+measureCarousel();
+carouselFrame = requestAnimationFrame(animateCarousel);
+window.addEventListener("resize", measureCarousel);
 
 const canvas = document.querySelector("#sandCanvas");
 const context = canvas.getContext("2d");
