@@ -482,8 +482,17 @@ function renderDetail(project) {
 }
 
 document.querySelector("#openProfile").addEventListener("click", (event) => activateView("profile", event.currentTarget));
+function stopDetailMedia() {
+  detailPanel.querySelectorAll(".project-video").forEach(function (video) {
+    video.pause();
+    video.removeAttribute("src");
+    video.load();
+  });
+}
+
 document.querySelector("#backToHome").addEventListener("click", (event) => {
   stopDetailGallery();
+  stopDetailMedia();
   activateView("home", event.currentTarget);
 });
 document.querySelector("#backFromProfile").addEventListener("click", (event) => activateView("home", event.currentTarget));
@@ -491,6 +500,7 @@ document.querySelector("#backFromProfile").addEventListener("click", (event) => 
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !views.home.classList.contains("is-active")) {
     stopDetailGallery();
+    stopDetailMedia();
     activateView("home");
   }
 });
@@ -550,6 +560,7 @@ function getPointerX(event) {
 }
 
 function startCarouselDrag(event) {
+  event.preventDefault();
   isDraggingCarousel = true;
   carouselDragStartX = getPointerX(event);
   carouselDragStartOffset = carouselOffset;
@@ -614,7 +625,7 @@ workViewport.addEventListener("pointerdown", (event) => {
   startCarouselDrag(event);
 });
 
-workViewport.addEventListener("pointermove", moveCarouselDrag);
+workViewport.addEventListener("pointermove", moveCarouselDrag, { passive: true });
 workViewport.addEventListener("pointerup", endCarouselDrag);
 workViewport.addEventListener("pointercancel", endCarouselDrag);
 
@@ -776,14 +787,17 @@ let particles = [];
 let animationFrame = 0;
 
 function resizeCanvas() {
-  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  const isMobile = window.innerWidth < 768;
+  const ratio = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
   canvas.width = Math.floor(window.innerWidth * ratio);
   canvas.height = Math.floor(window.innerHeight * ratio);
   canvas.style.width = `${window.innerWidth}px`;
   canvas.style.height = `${window.innerHeight}px`;
   context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-  const count = Math.min(260, Math.max(130, Math.floor(window.innerWidth / 7)));
+  const count = isMobile
+    ? Math.min(80, Math.floor(window.innerWidth / 8))
+    : Math.min(260, Math.max(130, Math.floor(window.innerWidth / 7)));
   particles = Array.from({ length: count }, (_, index) => ({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,

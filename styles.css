@@ -388,7 +388,9 @@ img {
   z-index: 12;
   flex-basis: clamp(420px, 38vw, 620px);
   border-color: rgba(98, 230, 211, 0.42);
-  filter: drop-shadow(0 24px 60px rgba(98, 230, 211, 0.13));
+  box-shadow:
+    0 24px 60px rgba(98, 230, 211, 0.13),
+    0 30px 90px rgba(0, 0, 0, 0.42);
   transform: translateY(-16px) scale(1.02);
 }
 
@@ -1207,5 +1209,14 @@ img {
 
   .detail-section {
     padding: 18px;
+  }
+
+  .name-button,
+  .ghost-link,
+  .back-button,
+  .profile-links a,
+  .detail-panel,
+  .profile-panel {
+    backdrop-filter: none;
   }
 }
