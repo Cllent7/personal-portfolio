@@ -200,8 +200,18 @@ const views = {
 const workGrid = document.querySelector("#workGrid");
 const detailPanel = document.querySelector("#detailPanel");
 const cardOrder = ["vr-room", "physics-illusion", "element-knight", "wisdom-strength", "justice-raid"];
+const transitionFlare = document.querySelector("#transitionFlare");
 
-function activateView(name) {
+function activateView(name, origin) {
+  if (origin) {
+    const rect = origin.getBoundingClientRect();
+    transitionFlare.style.setProperty("--flare-x", `${rect.left + rect.width / 2}px`);
+    transitionFlare.style.setProperty("--flare-y", `${rect.top + rect.height / 2}px`);
+    transitionFlare.classList.remove("is-running");
+    void transitionFlare.offsetWidth;
+    transitionFlare.classList.add("is-running");
+  }
+
   Object.values(views).forEach((view) => view.classList.remove("is-active"));
   views[name].classList.add("is-active");
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -266,7 +276,7 @@ function renderWorkCards() {
     card.addEventListener("click", () => {
       const project = projects.find((item) => item.id === card.dataset.project);
       renderDetail(project);
-      activateView("detail");
+      activateView("detail", card);
     });
   });
 }
@@ -276,6 +286,9 @@ function renderDetail(project) {
     <div class="detail-hero">
       <div class="detail-media">
         ${mediaMarkup(project, "media-placeholder")}
+        <span class="scanline"></span>
+        <span class="corner-mark corner-a"></span>
+        <span class="corner-mark corner-b"></span>
       </div>
       <div class="detail-copy">
         <p class="kicker">${project.repo}</p>
@@ -296,6 +309,12 @@ function renderDetail(project) {
       <section class="detail-section">
         <h3>项目简介</h3>
         <p>${project.contribution}</p>
+        <div class="signal-row">
+          <span>Role</span>
+          <strong>${project.role}</strong>
+          <span>Status</span>
+          <strong>${project.award}</strong>
+        </div>
         <h3>技术亮点</h3>
         <ul>${project.highlights.map((item) => `<li>${item}</li>`).join("")}</ul>
       </section>
@@ -341,3 +360,66 @@ window.addEventListener("keydown", (event) => {
 });
 
 renderWorkCards();
+
+const canvas = document.querySelector("#sandCanvas");
+const context = canvas.getContext("2d");
+let particles = [];
+let animationFrame = 0;
+
+function resizeCanvas() {
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.floor(window.innerWidth * ratio);
+  canvas.height = Math.floor(window.innerHeight * ratio);
+  canvas.style.width = `${window.innerWidth}px`;
+  canvas.style.height = `${window.innerHeight}px`;
+  context.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+  const count = Math.min(150, Math.max(70, Math.floor(window.innerWidth / 12)));
+  particles = Array.from({ length: count }, (_, index) => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    size: Math.random() * 1.8 + 0.5,
+    speed: Math.random() * 0.45 + 0.14,
+    phase: Math.random() * Math.PI * 2,
+    hue: index % 3
+  }));
+}
+
+function drawSand(time) {
+  context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+  const gradient = context.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+  gradient.addColorStop(0, "rgba(98,230,211,0.055)");
+  gradient.addColorStop(0.48, "rgba(158,123,255,0.045)");
+  gradient.addColorStop(1, "rgba(245,182,91,0.052)");
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+  particles.forEach((particle) => {
+    const wave = Math.sin(time * 0.00045 + particle.phase);
+    particle.x += particle.speed + wave * 0.28;
+    particle.y += Math.cos(time * 0.00032 + particle.phase) * 0.18;
+
+    if (particle.x > window.innerWidth + 20) {
+      particle.x = -20;
+      particle.y = Math.random() * window.innerHeight;
+    }
+
+    const colors = [
+      "rgba(98,230,211,0.34)",
+      "rgba(158,123,255,0.28)",
+      "rgba(245,182,91,0.26)"
+    ];
+
+    context.beginPath();
+    context.fillStyle = colors[particle.hue];
+    context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+    context.fill();
+  });
+
+  animationFrame = requestAnimationFrame(drawSand);
+}
+
+resizeCanvas();
+drawSand(0);
+window.addEventListener("resize", resizeCanvas);

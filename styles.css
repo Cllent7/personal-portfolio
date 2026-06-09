@@ -71,6 +71,16 @@ img {
   max-width: 100%;
 }
 
+.sand-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -4;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.82;
+  pointer-events: none;
+}
+
 .scene-noise {
   position: fixed;
   inset: 0;
@@ -95,6 +105,26 @@ img {
   filter: blur(80px);
   opacity: 0.45;
   animation: slow-spin 22s linear infinite;
+}
+
+.transition-flare {
+  position: fixed;
+  top: var(--flare-y, 50%);
+  left: var(--flare-x, 50%);
+  z-index: 80;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95), rgba(98, 230, 211, 0.48) 22%, rgba(158, 123, 255, 0.24) 42%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0.2);
+  mix-blend-mode: screen;
+}
+
+.transition-flare.is-running {
+  animation: flare-expand 620ms cubic-bezier(0.16, 0.8, 0.2, 1) both;
 }
 
 .app-shell {
@@ -282,6 +312,18 @@ img {
   transition: opacity 220ms ease;
 }
 
+.work-card .work-card-content::before {
+  position: absolute;
+  inset: auto 20px 20px 20px;
+  height: 1px;
+  content: "";
+  opacity: 0.42;
+  background: linear-gradient(90deg, transparent, rgba(98, 230, 211, 0.8), transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 260ms ease;
+}
+
 .work-card:hover {
   z-index: 2;
   border-color: rgba(98, 230, 211, 0.42);
@@ -296,6 +338,10 @@ img {
 
 .work-card:hover::after {
   opacity: 1;
+}
+
+.work-card:hover .work-card-content::before {
+  transform: scaleX(1);
 }
 
 .work-card.placeholder-card::before {
@@ -422,6 +468,46 @@ img {
   background: linear-gradient(to top, rgba(6, 8, 13, 0.66), transparent 55%);
 }
 
+.scanline {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.055) 0,
+      rgba(255, 255, 255, 0.055) 1px,
+      transparent 1px,
+      transparent 7px
+    );
+  mix-blend-mode: screen;
+  opacity: 0.26;
+  animation: scan-drift 7s linear infinite;
+}
+
+.corner-mark {
+  position: absolute;
+  z-index: 3;
+  width: 74px;
+  height: 74px;
+  pointer-events: none;
+}
+
+.corner-a {
+  top: 18px;
+  left: 18px;
+  border-top: 1px solid rgba(98, 230, 211, 0.8);
+  border-left: 1px solid rgba(98, 230, 211, 0.8);
+}
+
+.corner-b {
+  right: 18px;
+  bottom: 18px;
+  border-right: 1px solid rgba(245, 182, 91, 0.72);
+  border-bottom: 1px solid rgba(245, 182, 91, 0.72);
+}
+
 .media-placeholder,
 .video-placeholder,
 .profile-photo-slot {
@@ -521,6 +607,28 @@ img {
   font-size: 24px;
 }
 
+.signal-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(98, 230, 211, 0.075), rgba(158, 123, 255, 0.05));
+}
+
+.signal-row span {
+  color: var(--cyan);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.signal-row strong {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 13px;
+}
+
 .detail-section ul {
   display: grid;
   gap: 12px;
@@ -562,6 +670,21 @@ img {
 .video-placeholder {
   min-height: 260px;
   cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-placeholder::before {
+  position: absolute;
+  inset: -40%;
+  content: "";
+  background: conic-gradient(from 180deg, transparent, rgba(98, 230, 211, 0.18), transparent, rgba(245, 182, 91, 0.13), transparent);
+  animation: slow-spin 12s linear infinite;
+}
+
+.video-placeholder > * {
+  position: relative;
+  z-index: 1;
 }
 
 .play-core {
@@ -684,6 +807,29 @@ img {
   }
   to {
     transform: translate3d(4%, 3%, 0) rotate(2deg) scale(1.08);
+  }
+}
+
+@keyframes scan-drift {
+  from {
+    transform: translateY(-24px);
+  }
+  to {
+    transform: translateY(24px);
+  }
+}
+
+@keyframes flare-expand {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+  }
+  34% {
+    opacity: 0.78;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(72);
   }
 }
 
