@@ -3,128 +3,151 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Unity Developer Portfolio</title>
+    <title>Personal Portfolio | Unity Developer</title>
     <meta
       name="description"
-      content="Unity 开发工程师作品集，展示项目、技能栈、开发经验和联系方式。"
+      content="Unity 开发工程师个人作品集，展示游戏玩法、VR 交互、教育仿真、AI 应用、性能优化与项目工程能力。"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
     <header class="topbar">
       <a class="brand" href="#top" aria-label="返回顶部">
-        <span class="brand-mark">U</span>
-        <span>Unity Dev Portfolio</span>
+        <span class="brand-mark">C</span>
+        <span>Personal Portfolio</span>
       </a>
       <nav class="nav" aria-label="主导航">
         <a href="#projects">作品</a>
-        <a href="#skills">技能</a>
+        <a href="#capabilities">能力</a>
         <a href="#about">关于</a>
         <a href="#contact">联系</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero">
+      <section class="hero reveal">
         <div class="hero-copy">
-          <p class="eyebrow">Unity Developer / Gameplay / Tools / WebGL</p>
-          <h1>你好，我是一名 Unity 开发工程师。</h1>
+          <p class="eyebrow">Unity Developer / Gameplay / VR / AI Interaction</p>
+          <h1>把游戏机制、交互系统和工程落地做成可展示的作品。</h1>
           <p class="hero-text">
-            专注于 Unity 客户端开发、玩法系统、交互体验、性能优化与工具链建设。这里展示我的代表项目、技术能力和可合作方向。
+            我专注 Unity 客户端与交互体验开发，覆盖 2D/3D 游戏、VR 沉浸式系统、教育仿真、AI 语音交互与性能优化。这里整理了我最能代表工程能力和项目完整度的五个作品。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#projects">查看作品</a>
-            <a class="button ghost" href="#contact">联系我</a>
+            <a class="button primary" href="#projects">查看项目</a>
+            <a class="button ghost" href="https://github.com/Cllent7" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
-        <div class="hero-panel" aria-label="开发方向摘要">
-          <div>
-            <span class="metric">5+</span>
-            <span class="metric-label">可替换为项目经验年限</span>
+
+        <aside class="identity-card" aria-label="个人信息占位">
+          <div class="portrait-slot">
+            <span>个人照片</span>
+            <small>替换为你的头像或职业照</small>
           </div>
-          <div>
-            <span class="metric">12</span>
-            <span class="metric-label">可替换为上线/练习项目数</span>
+          <div class="identity-meta">
+            <span>Available for Unity roles</span>
+            <strong>Cllent7</strong>
+            <p>Gameplay systems, interaction design, architecture and optimization.</p>
           </div>
-          <div>
-            <span class="metric">60fps</span>
-            <span class="metric-label">性能与体验目标</span>
-          </div>
-        </div>
+        </aside>
       </section>
 
-      <section class="section intro-band">
-        <div class="section-heading">
-          <p class="eyebrow">What I Build</p>
-          <h2>把玩法、工程和展示体验做成一个整体</h2>
-        </div>
-        <p>
-          你可以把这页当成个人主页，也可以改造成求职作品集、外包接单页、独立游戏展示页或公司内部项目展示入口。
-        </p>
+      <section class="ticker reveal" aria-label="能力摘要">
+        <span>Unity</span>
+        <span>C#</span>
+        <span>Gameplay</span>
+        <span>VR</span>
+        <span>AI Dialogue</span>
+        <span>FSM</span>
+        <span>MVC</span>
+        <span>Object Pool</span>
+        <span>UGUI</span>
+        <span>Performance</span>
       </section>
 
       <section class="section" id="projects">
-        <div class="section-heading">
+        <div class="section-heading reveal">
           <p class="eyebrow">Selected Work</p>
-          <h2>代表作品</h2>
+          <h2>五个代表项目</h2>
+          <p>
+            每个项目都保留图片和视频位置。当前图片来自项目 README，视频区域先留坑，后续你给视频文件或链接后可以直接替换。
+          </p>
         </div>
+        <div class="featured-project reveal" id="featuredProject"></div>
         <div class="project-grid" id="projectGrid"></div>
       </section>
 
-      <section class="section split" id="skills">
-        <div class="section-heading">
-          <p class="eyebrow">Stack</p>
-          <h2>技术栈</h2>
+      <section class="section case-section" id="caseStudies">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Case Studies</p>
+          <h2>项目细节与我的职责</h2>
         </div>
-        <div class="skill-cloud">
-          <span>C#</span>
-          <span>Unity</span>
-          <span>UGUI</span>
-          <span>URP</span>
-          <span>Addressables</span>
-          <span>AssetBundle</span>
-          <span>WebGL</span>
-          <span>Shader Graph</span>
-          <span>Timeline</span>
-          <span>DOTween</span>
-          <span>Git</span>
-          <span>性能优化</span>
+        <div class="case-list" id="caseList"></div>
+      </section>
+
+      <section class="section capability-section" id="capabilities">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Capabilities</p>
+          <h2>我能交付的能力</h2>
+        </div>
+        <div class="capability-grid">
+          <article class="capability-card reveal">
+            <span>01</span>
+            <h3>Gameplay Systems</h3>
+            <p>角色控制、战斗反馈、关卡推进、状态流、Roguelike 构筑与核心循环。</p>
+          </article>
+          <article class="capability-card reveal">
+            <span>02</span>
+            <h3>Interaction & VR</h3>
+            <p>VR 场景交互、语音输入输出、数字人反馈、沉浸式空间体验。</p>
+          </article>
+          <article class="capability-card reveal">
+            <span>03</span>
+            <h3>Architecture</h3>
+            <p>MVC、FSM、事件总线、ScriptableObject 数据驱动与模块化协作。</p>
+          </article>
+          <article class="capability-card reveal">
+            <span>04</span>
+            <h3>Optimization</h3>
+            <p>对象池、异步加载、资源管理、GC 控制与稳定帧率体验。</p>
+          </article>
         </div>
       </section>
 
-      <section class="section about" id="about">
-        <div class="section-heading">
-          <p class="eyebrow">About</p>
-          <h2>关于我</h2>
-        </div>
-        <div class="about-content">
-          <p>
-            我擅长把策划需求拆成稳定的客户端系统，关注运行时性能、资源加载、交互反馈和多人协作效率。也能把项目沉淀成工具、模板和可复用模块。
-          </p>
-          <ul>
-            <li>玩法系统：角色控制、战斗、关卡、背包、任务、UI 状态流。</li>
-            <li>工程能力：模块拆分、资源管理、构建流程、调试工具。</li>
-            <li>交付能力：WebGL 演示、移动端适配、作品集展示与在线预览。</li>
-          </ul>
+      <section class="section about-section" id="about">
+        <div class="about-panel reveal">
+          <div>
+            <p class="eyebrow">About</p>
+            <h2>关于我</h2>
+            <p>
+              我是一名 Unity 开发工程师，偏好把复杂需求拆成清晰系统：从玩法验证、交互闭环、UI 框架到性能优化，都希望能做出可维护、可展示、可继续迭代的项目。
+            </p>
+          </div>
+          <div class="about-photo-slot">
+            <span>个人照片区域</span>
+            <small>建议放半身照、工作照或风格统一的头像</small>
+          </div>
         </div>
       </section>
 
-      <section class="section contact" id="contact">
-        <div>
+      <section class="section contact-section" id="contact">
+        <div class="contact-copy reveal">
           <p class="eyebrow">Contact</p>
-          <h2>合作或了解更多</h2>
-          <p>把下面内容替换成你的邮箱、微信、GitHub、B 站、TapTap、itch.io 或作品下载链接。</p>
+          <h2>期待一次具体的项目交流</h2>
+          <p>这里后续可以替换成你的邮箱、微信、简历 PDF、Vercel 链接、B 站视频或项目试玩入口。</p>
         </div>
-        <div class="contact-links">
-          <a href="mailto:yourname@example.com">yourname@example.com</a>
-          <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <div class="contact-links reveal">
+          <a href="mailto:ddo0o@qq.com">ddo0o@qq.com</a>
+          <a href="https://github.com/Cllent7" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="#projects">Project Gallery</a>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>© <span id="year"></span> Unity Developer Portfolio</span>
+      <span>© <span id="year"></span> Personal Portfolio</span>
       <a href="#top">Back to top</a>
     </footer>
 
