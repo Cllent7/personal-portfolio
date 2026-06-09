@@ -7,6 +7,7 @@ const projects = [
     role: "毕业设计 / 核心玩法与工程系统",
     period: "Unity 2022 LTS",
     award: "核心作品",
+    priority: "core",
     summary:
       "2D 俯视角 Roguelike 动作射击游戏。玩家在程序化生成地牢中使用弓箭、水/冰元素技能与随机增益构筑流派，挑战五大关卡和 Boss。",
     contribution:
@@ -41,6 +42,7 @@ const projects = [
     role: "VR 交互 / AI 语音闭环",
     period: "PICO / Unity VR",
     award: "AI VR",
+    priority: "featured",
     summary:
       "Unity + VR 沉浸式心理支持系统，通过虚拟空间帮助用户进行情绪调节、压力释放和正向引导。",
     contribution:
@@ -80,6 +82,7 @@ const projects = [
     role: "物理仿真 / 教育交互",
     period: "PC / Unity 3D",
     award: "教育仿真",
+    priority: "normal",
     summary:
       "面向初高中物理课堂的 3D 交互式综合物理实验仿真软件，将抽象、危险或难以实操的实验做成可操作体验。",
     contribution:
@@ -119,6 +122,7 @@ const projects = [
     role: "副程序 / 关卡机制 / UI 框架",
     period: "省级优胜奖",
     award: "省级优胜奖",
+    priority: "normal",
     summary:
       "72 小时 GameJam 作品，2D 像素风非对称双人合作剧情解谜。两位角色围绕“力”与“智”的差异协作逃离养老院。",
     contribution:
@@ -158,6 +162,7 @@ const projects = [
     role: "个人独立开发 / 架构与优化",
     period: "CMIT 国赛三等奖",
     award: "CMIT 国赛三等奖",
+    priority: "normal",
     summary:
       "Unity 3D 第一人称生存射击游戏。玩家在废弃工厂中利用有限资源突破僵尸围堵，完成硬核生存挑战。",
     contribution:
@@ -245,20 +250,29 @@ function galleryMarkup(project) {
 }
 
 function renderWorkCards() {
-  workGrid.innerHTML = projects
+  const orderedProjects = projects
     .slice()
-    .sort((a, b) => cardOrder.indexOf(a.id) - cardOrder.indexOf(b.id))
+    .sort((a, b) => cardOrder.indexOf(a.id) - cardOrder.indexOf(b.id));
+  const loopProjects = [...orderedProjects, ...orderedProjects];
+
+  workGrid.innerHTML = loopProjects
     .map((project, index) => {
       const background = project.image ? `url(${project.image})` : "none";
       const placeholderClass = project.image ? "" : "placeholder-card";
+      const priorityClass = project.priority === "core" ? "is-core" : project.priority === "featured" ? "is-featured" : "";
+      const displayIndex = String((index % orderedProjects.length) + 1).padStart(2, "0");
 
       return `
-        <button class="work-card ${placeholderClass} ${project.id === "element-knight" ? "core-card" : ""}" type="button" data-project="${project.id}" style="--card-bg:${background}">
-          <span class="work-card-index">${String(index + 1).padStart(2, "0")}</span>
+        <button class="work-card ${placeholderClass} ${priorityClass}" type="button" data-project="${project.id}" style="--card-bg:${background}">
+          <span class="work-card-index">${displayIndex}</span>
+          ${project.priority === "core" ? '<span class="priority-ribbon">Core</span>' : ""}
+          ${project.priority === "featured" ? '<span class="priority-ribbon featured-ribbon">Featured</span>' : ""}
           <div class="work-card-content">
             <span class="work-card-type">${project.type}</span>
             <h2>${project.title}</h2>
             <p>${project.award} · ${project.role}</p>
+            <div class="card-tags">${renderTags(project.tags.slice(0, 4))}</div>
+            <small>${project.summary}</small>
             <span class="hover-hint">查看项目详情 <span>Enter</span></span>
           </div>
         </button>
@@ -374,13 +388,14 @@ function resizeCanvas() {
   canvas.style.height = `${window.innerHeight}px`;
   context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-  const count = Math.min(150, Math.max(70, Math.floor(window.innerWidth / 12)));
+  const count = Math.min(260, Math.max(130, Math.floor(window.innerWidth / 7)));
   particles = Array.from({ length: count }, (_, index) => ({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
-    size: Math.random() * 1.8 + 0.5,
-    speed: Math.random() * 0.45 + 0.14,
+    size: Math.random() * 2.2 + 0.45,
+    speed: Math.random() * 0.62 + 0.18,
     phase: Math.random() * Math.PI * 2,
+    drift: Math.random() * 1.2 + 0.4,
     hue: index % 3
   }));
 }
@@ -395,10 +410,26 @@ function drawSand(time) {
   context.fillStyle = gradient;
   context.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
+  for (let band = 0; band < 5; band += 1) {
+    const y = window.innerHeight * (0.18 + band * 0.17) + Math.sin(time * 0.00022 + band) * 34;
+    const bandGradient = context.createLinearGradient(0, y - 80, window.innerWidth, y + 80);
+    bandGradient.addColorStop(0, "rgba(98,230,211,0)");
+    bandGradient.addColorStop(0.45, band % 2 === 0 ? "rgba(98,230,211,0.07)" : "rgba(158,123,255,0.065)");
+    bandGradient.addColorStop(1, "rgba(245,182,91,0)");
+    context.save();
+    context.translate(Math.sin(time * 0.00016 + band) * 70, y);
+    context.rotate(-0.16 + band * 0.018);
+    context.fillStyle = bandGradient;
+    context.fillRect(-160, -34, window.innerWidth + 320, 68);
+    context.restore();
+  }
+
   particles.forEach((particle) => {
-    const wave = Math.sin(time * 0.00045 + particle.phase);
-    particle.x += particle.speed + wave * 0.28;
-    particle.y += Math.cos(time * 0.00032 + particle.phase) * 0.18;
+    const wave = Math.sin(time * 0.00055 + particle.phase);
+    const previousX = particle.x;
+    const previousY = particle.y;
+    particle.x += particle.speed + wave * particle.drift;
+    particle.y += Math.cos(time * 0.0004 + particle.phase) * 0.32;
 
     if (particle.x > window.innerWidth + 20) {
       particle.x = -20;
@@ -410,6 +441,13 @@ function drawSand(time) {
       "rgba(158,123,255,0.28)",
       "rgba(245,182,91,0.26)"
     ];
+
+    context.strokeStyle = colors[particle.hue].replace("0.", "0.18");
+    context.lineWidth = Math.max(0.4, particle.size * 0.45);
+    context.beginPath();
+    context.moveTo(previousX, previousY);
+    context.lineTo(particle.x, particle.y);
+    context.stroke();
 
     context.beginPath();
     context.fillStyle = colors[particle.hue];

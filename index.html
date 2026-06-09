@@ -29,10 +29,12 @@
             <span>打开个人介绍</span>
             <small>Unity Developer / Cllent7</small>
           </button>
-          <span>五个项目对应五张卡片。悬停查看提示，点击进入项目详情。</span>
+          <span>作品轨道会自动循环。悬停卡片暂停并展开内容，点击进入项目详情。</span>
         </div>
 
-        <section class="work-grid" id="workGrid" aria-label="项目列表"></section>
+        <section class="work-viewport" aria-label="项目列表">
+          <div class="work-track" id="workGrid"></div>
+        </section>
       </section>
 
       <section class="detail-view view" id="detailView" aria-label="项目详情">
