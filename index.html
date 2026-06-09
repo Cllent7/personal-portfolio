@@ -3,153 +3,70 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Personal Portfolio | Unity Developer</title>
+    <title>Cllent7 Portfolio | Unity Developer</title>
     <meta
       name="description"
-      content="Unity 开发工程师个人作品集，展示游戏玩法、VR 交互、教育仿真、AI 应用、性能优化与项目工程能力。"
+      content="Cllent7 的 Unity 开发工程师作品集，展示游戏、VR、AI 交互、教育仿真与性能优化项目。"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="ambient ambient-one" aria-hidden="true"></div>
-    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <div class="scene-noise" aria-hidden="true"></div>
+    <div class="light-field" aria-hidden="true"></div>
 
-    <header class="topbar">
-      <a class="brand" href="#top" aria-label="返回顶部">
-        <span class="brand-mark">C</span>
-        <span>Personal Portfolio</span>
-      </a>
-      <nav class="nav" aria-label="主导航">
-        <a href="#projects">作品</a>
-        <a href="#capabilities">能力</a>
-        <a href="#about">关于</a>
-        <a href="#contact">联系</a>
-      </nav>
-    </header>
+    <main class="app-shell" id="app">
+      <section class="home-view view is-active" id="homeView" aria-label="作品集首页">
+        <header class="hero-bar">
+          <button class="name-button" id="openProfile" type="button" aria-label="打开个人介绍">
+            <span>Cllent7</span>
+            <small>Unity Developer</small>
+          </button>
+          <a class="ghost-link" href="https://github.com/Cllent7" target="_blank" rel="noreferrer">GitHub</a>
+        </header>
 
-    <main id="top">
-      <section class="hero reveal">
-        <div class="hero-copy">
-          <p class="eyebrow">Unity Developer / Gameplay / VR / AI Interaction</p>
-          <h1>把游戏机制、交互系统和工程落地做成可展示的作品。</h1>
-          <p class="hero-text">
-            我专注 Unity 客户端与交互体验开发，覆盖 2D/3D 游戏、VR 沉浸式系统、教育仿真、AI 语音交互与性能优化。这里整理了我最能代表工程能力和项目完整度的五个作品。
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#projects">查看项目</a>
-            <a class="button ghost" href="https://github.com/Cllent7" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
+        <div class="home-title">
+          <p>Gameplay / VR / AI Interaction / Simulation</p>
+          <h1>Cllent7 的作品集</h1>
+          <span>点击项目卡片查看详情。点击名字进入个人介绍。</span>
         </div>
 
-        <aside class="identity-card" aria-label="个人信息占位">
-          <div class="portrait-slot">
+        <section class="work-grid" id="workGrid" aria-label="项目列表"></section>
+      </section>
+
+      <section class="detail-view view" id="detailView" aria-label="项目详情">
+        <button class="back-button" id="backToHome" type="button">返回作品集</button>
+        <article class="detail-panel" id="detailPanel"></article>
+      </section>
+
+      <section class="profile-view view" id="profileView" aria-label="个人介绍">
+        <button class="back-button" id="backFromProfile" type="button">返回作品集</button>
+        <article class="profile-panel">
+          <div class="profile-photo-slot">
             <span>个人照片</span>
-            <small>替换为你的头像或职业照</small>
+            <small>后续替换为你的头像、半身照或工作照</small>
           </div>
-          <div class="identity-meta">
-            <span>Available for Unity roles</span>
-            <strong>Cllent7</strong>
-            <p>Gameplay systems, interaction design, architecture and optimization.</p>
-          </div>
-        </aside>
-      </section>
-
-      <section class="ticker reveal" aria-label="能力摘要">
-        <span>Unity</span>
-        <span>C#</span>
-        <span>Gameplay</span>
-        <span>VR</span>
-        <span>AI Dialogue</span>
-        <span>FSM</span>
-        <span>MVC</span>
-        <span>Object Pool</span>
-        <span>UGUI</span>
-        <span>Performance</span>
-      </section>
-
-      <section class="section" id="projects">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Selected Work</p>
-          <h2>五个代表项目</h2>
-          <p>
-            每个项目都保留图片和视频位置。当前图片来自项目 README，视频区域先留坑，后续你给视频文件或链接后可以直接替换。
-          </p>
-        </div>
-        <div class="featured-project reveal" id="featuredProject"></div>
-        <div class="project-grid" id="projectGrid"></div>
-      </section>
-
-      <section class="section case-section" id="caseStudies">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Case Studies</p>
-          <h2>项目细节与我的职责</h2>
-        </div>
-        <div class="case-list" id="caseList"></div>
-      </section>
-
-      <section class="section capability-section" id="capabilities">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Capabilities</p>
-          <h2>我能交付的能力</h2>
-        </div>
-        <div class="capability-grid">
-          <article class="capability-card reveal">
-            <span>01</span>
-            <h3>Gameplay Systems</h3>
-            <p>角色控制、战斗反馈、关卡推进、状态流、Roguelike 构筑与核心循环。</p>
-          </article>
-          <article class="capability-card reveal">
-            <span>02</span>
-            <h3>Interaction & VR</h3>
-            <p>VR 场景交互、语音输入输出、数字人反馈、沉浸式空间体验。</p>
-          </article>
-          <article class="capability-card reveal">
-            <span>03</span>
-            <h3>Architecture</h3>
-            <p>MVC、FSM、事件总线、ScriptableObject 数据驱动与模块化协作。</p>
-          </article>
-          <article class="capability-card reveal">
-            <span>04</span>
-            <h3>Optimization</h3>
-            <p>对象池、异步加载、资源管理、GC 控制与稳定帧率体验。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section about-section" id="about">
-        <div class="about-panel reveal">
-          <div>
-            <p class="eyebrow">About</p>
-            <h2>关于我</h2>
+          <div class="profile-copy">
+            <p class="kicker">About Cllent7</p>
+            <h2>Unity 开发工程师，关注玩法、交互和工程落地。</h2>
             <p>
-              我是一名 Unity 开发工程师，偏好把复杂需求拆成清晰系统：从玩法验证、交互闭环、UI 框架到性能优化，都希望能做出可维护、可展示、可继续迭代的项目。
+              我擅长把策划目标拆成可维护的系统：玩法机制、VR 空间交互、AI 语音闭环、教育仿真、UI 框架与性能优化。作品覆盖个人独立开发、毕业设计、VR 项目、教育软件和 GameJam 团队协作。
             </p>
+            <div class="profile-tags">
+              <span>Unity</span>
+              <span>C#</span>
+              <span>Gameplay</span>
+              <span>VR</span>
+              <span>AI Interaction</span>
+              <span>Performance</span>
+            </div>
+            <div class="profile-links">
+              <a href="mailto:ddo0o@qq.com">ddo0o@qq.com</a>
+              <a href="https://github.com/Cllent7" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
           </div>
-          <div class="about-photo-slot">
-            <span>个人照片区域</span>
-            <small>建议放半身照、工作照或风格统一的头像</small>
-          </div>
-        </div>
-      </section>
-
-      <section class="section contact-section" id="contact">
-        <div class="contact-copy reveal">
-          <p class="eyebrow">Contact</p>
-          <h2>期待一次具体的项目交流</h2>
-          <p>这里后续可以替换成你的邮箱、微信、简历 PDF、Vercel 链接、B 站视频或项目试玩入口。</p>
-        </div>
-        <div class="contact-links reveal">
-          <a href="mailto:ddo0o@qq.com">ddo0o@qq.com</a>
-          <a href="https://github.com/Cllent7" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="#projects">Project Gallery</a>
-        </div>
+        </article>
       </section>
     </main>
-
-    <footer class="footer">
-      <span>© <span id="year"></span> Personal Portfolio</span>
-      <a href="#top">Back to top</a>
-    </footer>
 
     <script src="./script.js"></script>
   </body>
