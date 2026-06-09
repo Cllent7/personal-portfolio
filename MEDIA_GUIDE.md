@@ -1,6 +1,6 @@
 # 媒体替换与部署说明
 
-## 1. 你的素材目录
+## 1. 素材目录
 
 当前项目使用这两个目录：
 
@@ -9,150 +9,114 @@ assets/images/
 assets/videos/
 ```
 
-你这次已经放进去的文件我已经接到页面里了。
+- `assets/images/`：项目封面和演示截图，随 Git 提交到 GitHub。
+- `assets/videos/`：本地预览视频，**不会提交到 GitHub**（已在 `.gitignore` 中排除）。
 
-## 2. 当前媒体映射
+## 2. 视频策略
+
+GitHub Pages 不适合托管大 mp4 文件（单文件限制 100MB，加载缓慢）。本项目采用双地址策略：
+
+| 字段 | 用途 | 示例 |
+|------|------|------|
+| `video` | 线上公网视频地址（OSS / CDN / R2） | `https://xxx.oss-cn-beijing.aliyuncs.com/Video/demo.mp4` |
+| `videoFallback` | 本地预览地址（不提交到 Git） | `./assets/videos/demo.mp4` |
+
+页面优先使用 `video`；如果 `video` 为空或加载失败，会尝试 `videoFallback`。
+
+在 `script.js` 中配置：
+
+```js
+{
+  id: "element-knight",
+  title: "万象回廊：元素",
+  image: "./assets/images/optimized/element-knight-cover-latest.webp",
+  gallery: [
+    "./assets/images/optimized/element-knight-gallery-01.webp",
+    "./assets/images/optimized/element-knight-gallery-02.webp"
+  ],
+  video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/element-knight.mp4",
+  videoFallback: "./assets/videos/element-knight.mp4",
+}
+```
+
+## 3. 当前媒体映射
 
 ### 万象回廊：元素
 
-- 卡片封面：`assets/images/万象回廊：元素封面.png`
-- 详情演示图：
-  - `assets/images/万象回廊：元素游戏演示.png`
-  - `assets/images/万象回廊：元素游戏演示 (2).png`
-  - `assets/images/万象回廊：元素游戏演示 (3).png`
-  - 一直到 `(12).png`
-- 视频：`assets/videos/万象回廊：元素.mp4`
+- 封面：`assets/images/optimized/element-knight-cover-latest.webp`
+- 演示图：`assets/images/optimized/element-knight-gallery-*.webp`（12 张）
+- 线上视频：阿里云 OSS 外链
+- 本地预览视频：`assets/videos/element-knight.mp4`（不提交）
 
 ### VR 心理疗愈
 
-- 卡片封面：`assets/images/Vr心理疗愈封面.png`
-- 详情演示图：
-  - `assets/images/Vr心理疗愈封面.png`
-  - `assets/images/Vr心理疗愈封面 (2).png`
-- 视频：`assets/videos/vr心理疗愈.mp4`
-
-### 预制力逃
-
-- 卡片封面：`assets/images/预制力逃封面.png`
-- 详情演示图：
-  - `assets/images/预制力逃封面.png`
-  - `assets/images/预制力逃封面.jpg`
-- 视频：`assets/videos/预智力逃.mp4`
+- 封面：`assets/images/optimized/vr-room-cover.webp`
+- 演示图：`assets/images/optimized/vr-room-gallery-*.webp`（13 张）
+- 线上视频：阿里云 OSS 外链
+- 本地预览视频：`assets/videos/vr-room.mp4`（不提交）
 
 ### 物理幻境之旅
 
-- 当前视频：`assets/videos/物理幻境之旅.mp4`
-- 当前封面和详情图暂时仍使用原有远程图
+- 封面：`assets/images/optimized/physics-illusion-cover-latest.webp`
+- 演示图：`assets/images/optimized/physics-illusion-gallery-*.webp`（3 张）
+- 线上视频：阿里云 OSS 外链
+- 本地预览视频：`assets/videos/physics-illusion.mp4`（不提交）
+
+### 预制力逃
+
+- 封面：`assets/images/optimized/wisdom-strength-cover.webp`
+- 演示图：`assets/images/optimized/wisdom-strength-gallery-*.webp`（9 张）
+- 线上视频：阿里云 OSS 外链
+- 本地预览视频：`assets/videos/wisdom-strength.mp4`（不提交）
 
 ### 废弃工厂的正义突袭
 
-- 当前视频：`assets/videos/废弃工厂的正义突袭.mp4`
-- 当前封面和详情图暂时仍使用原有远程图
+- 封面：`assets/images/optimized/justice-raid-cover-latest.webp`
+- 演示图：`assets/images/optimized/justice-raid-gallery-*.webp`（14 张）
+- 线上视频：阿里云 OSS 外链
+- 本地预览视频：`assets/videos/justice-raid.mp4`（不提交）
 
-## 3. 以后怎么继续加图和视频
+## 4. 以后怎么继续加图和视频
 
-你后面只要继续把素材丢进这两个目录，再改 `script.js` 里的对应项目字段就行：
+图片直接放进 `assets/images/`，视频放进 `assets/videos/`（仅本地预览），然后修改 `script.js` 中对应项目的字段：
 
 ```js
-image: "./assets/images/你的封面.png",
+image: "./assets/images/你的封面.webp",
 gallery: [
-  "./assets/images/演示图1.png",
-  "./assets/images/演示图2.png"
+  "./assets/images/演示图1.webp",
+  "./assets/images/演示图2.webp"
 ],
-video: "https://cdn.your-domain.com/portfolio/demo.mp4",
+video: "https://你的CDN地址/demo.mp4",
 videoFallback: "./assets/videos/演示视频.mp4",
 ```
 
 说明：
 
-- `video` 用来放正式部署后的公网 CDN 地址
-- `videoFallback` 用来保留你本地预览时的视频
-- 页面会优先使用 `video`，没有填时才会用 `videoFallback`
+- `video` 放正式部署后的公网 CDN/OSS 地址
+- `videoFallback` 保留本地预览时的视频路径
+- `assets/videos/` 中的文件不会被提交到 GitHub
 
-现在详情页里的演示图已经支持：
+## 5. 推到 GitHub 并发布
 
-- 自动缓慢循环左移
-- 鼠标悬停暂停
-- 鼠标按住拖动
+修改完成后：
 
-首页作品卡片轨道也同样支持拖动。
-
-## 4. 推到 GitHub
-
-如果只是普通静态文件更新，命令就是：
-
-```powershell
+```bash
 git add .
 git commit -m "Update portfolio media"
 git push
 ```
 
-## 5. 部署到 Vercel
+GitHub Pages 会在推送后自动重新发布，无需额外操作。
 
-如果这个仓库已经接到 Vercel 了，那么：
+## 6. 视频容错
 
-- 你每次 `git push`
-- Vercel 就会自动重新部署
+如果线上视频加载失败（如 OSS 链接失效、网络问题），页面会自动显示友好提示：
 
-部署完成后，你会得到一个公网地址，例如：
+- 提示文字："视频暂时无法加载，可以尝试刷新页面或打开项目仓库查看演示说明。"
+- 如果配置了外链，会显示"打开视频外链"按钮，在新标签页打开原始视频地址。
 
-```text
-https://personal-portfolio-beta-eight-92.vercel.app/
-```
+## 7. 注意事项
 
-这个地址：
-
-- 手机微信可以打开
-- 电脑浏览器可以打开
-- 面试官扫码也能直接访问
-
-## 6. 怎么生成二维码
-
-拿到 Vercel 的公网地址之后，在项目根目录运行：
-
-```powershell
-.\make-public-qr.ps1 -Url "https://personal-portfolio-beta-eight-92.vercel.app/"
-```
-
-会生成两个文件：
-
-- `public-qr.png`：二维码图片
-- `public-qr.html`：二维码预览页
-
-你可以把 `public-qr.png`：
-
-- 放进简历
-- 放进 PDF 作品集
-- 发给面试官
-
-## 7. 你现在最需要注意的一件事
-
-你放进去的视频体积很大，当前大概是：
-
-- `vr心理疗愈.mp4`：约 110MB
-- `万象回廊：元素.mp4`：约 216MB
-- `预智力逃.mp4`：约 210MB
-- `物理幻境之旅.mp4`：约 445MB
-- `废弃工厂的正义突袭.mp4`：约 453MB
-
-这会带来两个现实问题：
-
-1. GitHub 普通推送对单文件通常有 100MB 限制
-2. 即便部署成功，网页加载也会很慢
-
-更稳的做法是：
-
-- 先把视频压缩到 20MB - 80MB 左右
-- 或者把视频放到外部存储/CDN，再在页面里使用外链
-
-如果你要走 CDN，我更推荐这类思路：
-
-1. 上传视频到对象存储或 CDN
-2. 拿到公开地址，比如 `https://cdn.xxx.com/portfolio/vr-room.mp4`
-3. 填进 `script.js` 的 `video` 字段
-4. 保留 `videoFallback` 只给本地调试用
-
-如果你愿意，我下一步可以直接继续帮你做两件事：
-
-1. 帮你把这几个大视频改成更适合上线的接入方案
-2. 顺手再把物理幻境之旅和废弃工厂这两个项目补本地封面位
+- 本地预览视频体积很大，不要尝试 `git add assets/videos/`——`.gitignore` 已自动排除。
+- 如需更换视频外链地址，只改 `script.js` 中的 `video` 字段即可。
+- 图片可以正常提交到 GitHub，建议使用 webp 格式控制体积。

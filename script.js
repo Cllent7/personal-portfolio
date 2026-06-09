@@ -333,11 +333,36 @@ function galleryMarkup(project) {
   `;
 }
 
+function handleVideoError(videoId, externalUrl) {
+  const wrapper = document.getElementById(videoId + "-wrapper");
+  if (!wrapper || wrapper.querySelector(".video-error-fallback")) {
+    return;
+  }
+
+  const fallback = document.createElement("div");
+  fallback.className = "video-error-fallback";
+  fallback.innerHTML = `
+    <span class="play-core"></span>
+    <strong>视频暂时无法加载</strong>
+    <small>可以尝试刷新页面或打开项目仓库查看演示说明。</small>
+    ${
+      externalUrl
+        ? `<a class="external-video-link" href="${externalUrl}" target="_blank" rel="noreferrer">打开视频外链</a>`
+        : ""
+    }
+  `;
+  wrapper.replaceWith(fallback);
+}
+
 function videoMarkup(project) {
   const source = getProjectVideoSource(project);
 
   if (source) {
-    return `<video class="project-video" src="${source}" poster="${project.image || ""}" controls playsinline preload="none"></video>`;
+    const videoId = `video-${project.id}`;
+    return `
+      <div class="video-wrapper" id="${videoId}-wrapper">
+        <video class="project-video" src="${source}" poster="${project.image || ""}" controls playsinline preload="none" onerror="handleVideoError('${videoId}', '${project.video || ""}')"></video>
+      </div>`;
   }
 
   return `

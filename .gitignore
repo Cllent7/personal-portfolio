@@ -1,3 +1,9 @@
-assets/videos/*.mp4
+assets/videos/
+Video/
+*.mp4
+*.mov
+*.webm
 public-qr.png
 public-qr.html
+.DS_Store
+Thumbs.db
