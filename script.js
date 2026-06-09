@@ -47,7 +47,7 @@ const projects = [
     ],
     video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/element-knight.mp4",
     videoFallback: "./assets/videos/element-knight.mp4",
-    link: "https://github.com/Cllent7/ElementKnight"
+    link: "https://github.com/cllent/ElementKnight"
   },
   {
     id: "vr-room",
@@ -98,7 +98,7 @@ const projects = [
     ],
     video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/vr-room.mp4",
     videoFallback: "./assets/videos/vr-room.mp4",
-    link: "https://github.com/Cllent7/VR_Psychological_Room"
+    link: "https://github.com/cllent/VR_Psychological_Room"
   },
   {
     id: "physics-illusion",
@@ -139,7 +139,7 @@ const projects = [
     ],
     video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/physics-illusion.mp4",
     videoFallback: "./assets/videos/physics-illusion.mp4",
-    link: "https://github.com/Cllent7/Journey-through-the-Physical-Illusion"
+    link: "https://github.com/cllent/Journey-through-the-Physical-Illusion"
   },
   {
     id: "wisdom-strength",
@@ -186,7 +186,7 @@ const projects = [
     ],
     video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/wisdom-strength.mp4",
     videoFallback: "./assets/videos/wisdom-strength.mp4",
-    link: "https://github.com/Cllent7/The-Great-Escape-of-Wisdom-and-Strength"
+    link: "https://github.com/cllent/The-Great-Escape-of-Wisdom-and-Strength"
   },
   {
     id: "justice-raid",
@@ -238,7 +238,7 @@ const projects = [
     ],
     video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/justice-raid.mp4",
     videoFallback: "./assets/videos/justice-raid.mp4",
-    link: "https://github.com/Cllent7/The-Justice-Raid-of-the-Abandoned-Factory"
+    link: "https://github.com/cllent/The-Justice-Raid-of-the-Abandoned-Factory"
   }
 ];
 
@@ -560,7 +560,6 @@ function getPointerX(event) {
 }
 
 function startCarouselDrag(event) {
-  event.preventDefault();
   isDraggingCarousel = true;
   carouselDragStartX = getPointerX(event);
   carouselDragStartOffset = carouselOffset;
@@ -625,7 +624,7 @@ workViewport.addEventListener("pointerdown", (event) => {
   startCarouselDrag(event);
 });
 
-workViewport.addEventListener("pointermove", moveCarouselDrag, { passive: true });
+workViewport.addEventListener("pointermove", moveCarouselDrag);
 workViewport.addEventListener("pointerup", endCarouselDrag);
 workViewport.addEventListener("pointercancel", endCarouselDrag);
 
