@@ -66,7 +66,7 @@ http://127.0.0.1:8094/
 部署成功后你会拿到一个公网地址，例如：
 
 ```text
-https://personal-portfolio.vercel.app/
+https://personal-portfolio-beta-eight-92.vercel.app/
 ```
 
 ## 生成二维码
@@ -74,7 +74,7 @@ https://personal-portfolio.vercel.app/
 拿到公网地址后，在当前目录运行：
 
 ```powershell
-.\make-public-qr.ps1 -Url "https://personal-portfolio.vercel.app/"
+.\make-public-qr.ps1 -Url "https://personal-portfolio-beta-eight-92.vercel.app/"
 ```
 
 会生成：

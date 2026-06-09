@@ -1,4 +1,4 @@
-param(
+﻿param(
   [Parameter(Mandatory = $true)]
   [string]$Url
 )
@@ -23,7 +23,7 @@ $Html = @"
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>作品集公网二维码</title>
+    <title>浣滃搧闆嗗叕缃戜簩缁寸爜</title>
     <style>
       body {
         margin: 0;
@@ -60,9 +60,9 @@ $Html = @"
   </head>
   <body>
     <main>
-      <h1>作品集公网二维码</h1>
-      <img src="./public-qr.png" alt="作品集公网访问二维码" />
-      <p>这个二维码指向公网地址，远程面试官可以直接扫码打开。</p>
+      <h1>浣滃搧闆嗗叕缃戜簩缁寸爜</h1>
+      <img src="./public-qr.png" alt="浣滃搧闆嗗叕缃戣闂簩缁寸爜" />
+      <p>这个二维码指向公开网址，远程面试官可以直接扫码打开。</p>
       <p><a href="$CleanUrl">$CleanUrl</a></p>
     </main>
   </body>
@@ -74,3 +74,4 @@ Set-Content -Path $HtmlPath -Value $Html -Encoding UTF8
 Write-Host "Created: $PngPath"
 Write-Host "Created: $HtmlPath"
 Write-Host "Target:  $CleanUrl"
+

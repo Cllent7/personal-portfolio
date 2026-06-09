@@ -97,7 +97,7 @@ git push
 部署完成后，你会得到一个公网地址，例如：
 
 ```text
-https://personal-portfolio.vercel.app/
+https://personal-portfolio-beta-eight-92.vercel.app/
 ```
 
 这个地址：
@@ -111,7 +111,7 @@ https://personal-portfolio.vercel.app/
 拿到 Vercel 的公网地址之后，在项目根目录运行：
 
 ```powershell
-.\make-public-qr.ps1 -Url "https://personal-portfolio.vercel.app/"
+.\make-public-qr.ps1 -Url "https://personal-portfolio-beta-eight-92.vercel.app/"
 ```
 
 会生成两个文件：

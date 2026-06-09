@@ -33,7 +33,7 @@ personal-portfolio
 发布成功后，Vercel 会给你一个 HTTPS 地址，通常类似：
 
 ```text
-https://personal-portfolio.vercel.app/
+https://personal-portfolio-beta-eight-92.vercel.app/
 ```
 
 这个地址是公网地址，远程面试官可以直接打开，也可以扫码打开。
@@ -43,7 +43,7 @@ https://personal-portfolio.vercel.app/
 发布成功后，在本目录运行：
 
 ```powershell
-.\make-public-qr.ps1 -Url "https://personal-portfolio.vercel.app/"
+.\make-public-qr.ps1 -Url "https://personal-portfolio-beta-eight-92.vercel.app/"
 ```
 
 生成的 `public-qr.png` 就是公网二维码。

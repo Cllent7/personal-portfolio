@@ -30,7 +30,7 @@ const projects = [
       "关卡推进系统：大关与小关节奏分层，Boss 阶段设计与掉落反馈联动。",
       "数据工作流：以可配置资产统一角色、敌人、关卡与掉落参数。 "
     ],
-    image: "./assets/images/optimized/element-knight-cover-2064.webp",
+    image: "./assets/images/optimized/element-knight-cover-latest.webp",
     gallery: [
       "./assets/images/optimized/element-knight-gallery-01.webp",
       "./assets/images/optimized/element-knight-gallery-02.webp",
@@ -131,7 +131,7 @@ const projects = [
       "实验流程系统：大厅、任务、传送门与验证阶段形成完整闭环。",
       "教学反馈系统：帮助学习者从观察、操作到验证理解物理结论。 "
     ],
-    image: "./assets/images/optimized/physics-illusion-cover.webp",
+    image: "./assets/images/optimized/physics-illusion-cover-latest.webp",
     gallery: [
       "./assets/images/optimized/physics-illusion-gallery-01.webp",
       "./assets/images/optimized/physics-illusion-gallery-02.webp",
@@ -219,7 +219,7 @@ const projects = [
       "资源系统：弹药、医疗包与道具限制提升生存紧张感。",
       "性能系统：统一对象池调度战斗中高频生成与销毁对象。 "
     ],
-    image: "./assets/images/optimized/justice-raid-cover-new.webp",
+    image: "./assets/images/optimized/justice-raid-cover-latest.webp",
     gallery: [
       "./assets/images/optimized/justice-raid-gallery-01.webp",
       "./assets/images/optimized/justice-raid-gallery-02.webp",
