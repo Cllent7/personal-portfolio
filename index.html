@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Unity Developer Portfolio</title>
+    <meta
+      name="description"
+      content="Unity 开发工程师作品集，展示项目、技能栈、开发经验和联系方式。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="返回顶部">
+        <span class="brand-mark">U</span>
+        <span>Unity Dev Portfolio</span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#projects">作品</a>
+        <a href="#skills">技能</a>
+        <a href="#about">关于</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Unity Developer / Gameplay / Tools / WebGL</p>
+          <h1>你好，我是一名 Unity 开发工程师。</h1>
+          <p class="hero-text">
+            专注于 Unity 客户端开发、玩法系统、交互体验、性能优化与工具链建设。这里展示我的代表项目、技术能力和可合作方向。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">查看作品</a>
+            <a class="button ghost" href="#contact">联系我</a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="开发方向摘要">
+          <div>
+            <span class="metric">5+</span>
+            <span class="metric-label">可替换为项目经验年限</span>
+          </div>
+          <div>
+            <span class="metric">12</span>
+            <span class="metric-label">可替换为上线/练习项目数</span>
+          </div>
+          <div>
+            <span class="metric">60fps</span>
+            <span class="metric-label">性能与体验目标</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band">
+        <div class="section-heading">
+          <p class="eyebrow">What I Build</p>
+          <h2>把玩法、工程和展示体验做成一个整体</h2>
+        </div>
+        <p>
+          你可以把这页当成个人主页，也可以改造成求职作品集、外包接单页、独立游戏展示页或公司内部项目展示入口。
+        </p>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Selected Work</p>
+          <h2>代表作品</h2>
+        </div>
+        <div class="project-grid" id="projectGrid"></div>
+      </section>
+
+      <section class="section split" id="skills">
+        <div class="section-heading">
+          <p class="eyebrow">Stack</p>
+          <h2>技术栈</h2>
+        </div>
+        <div class="skill-cloud">
+          <span>C#</span>
+          <span>Unity</span>
+          <span>UGUI</span>
+          <span>URP</span>
+          <span>Addressables</span>
+          <span>AssetBundle</span>
+          <span>WebGL</span>
+          <span>Shader Graph</span>
+          <span>Timeline</span>
+          <span>DOTween</span>
+          <span>Git</span>
+          <span>性能优化</span>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>关于我</h2>
+        </div>
+        <div class="about-content">
+          <p>
+            我擅长把策划需求拆成稳定的客户端系统，关注运行时性能、资源加载、交互反馈和多人协作效率。也能把项目沉淀成工具、模板和可复用模块。
+          </p>
+          <ul>
+            <li>玩法系统：角色控制、战斗、关卡、背包、任务、UI 状态流。</li>
+            <li>工程能力：模块拆分、资源管理、构建流程、调试工具。</li>
+            <li>交付能力：WebGL 演示、移动端适配、作品集展示与在线预览。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>合作或了解更多</h2>
+          <p>把下面内容替换成你的邮箱、微信、GitHub、B 站、TapTap、itch.io 或作品下载链接。</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:yourname@example.com">yourname@example.com</a>
+          <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Unity Developer Portfolio</span>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
