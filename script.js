@@ -9,69 +9,84 @@ const projects = [
     award: "核心作品",
     priority: "core",
     summary:
-      "2D 俯视角 Roguelike 动作射击游戏。玩家在程序化生成地牢中使用弓箭、水/冰元素技能与随机增益构筑流派，挑战五大关卡和 Boss。",
+      "以元素反应与随机成长为核心的 2D Roguelike 动作射击作品，围绕战斗反馈、关卡生成与长期可扩展内容结构展开。",
     contribution:
-      "负责核心战斗、元素反应、Roguelike 增益、程序化地牢接入、数据驱动配置和反馈系统组织。",
+      "负责核心战斗、元素状态、Roguelike 构筑、程序化地牢接入、数据驱动配置与整体玩法调优，作为作品集中最完整的代表项目展示。",
     highlights: [
-      "水/冰元素叠加触发冻结、眩晕、百分比伤害与易伤。",
-      "Edgar.Unity 程序化地牢，覆盖战斗房、精英房、Boss 房和宝箱房。",
-      "ScriptableObject 拆分角色、敌人、技能、掉落和关卡难度数据。"
+      "构建水、冰等元素叠加与状态转化机制，让攻击反馈和构筑路线形成联动。",
+      "接入 Edgar.Unity 程序化地牢方案，组织普通房、精英房、宝箱房与 Boss 房推进节奏。",
+      "将角色、敌人、技能、掉落与难度拆分为 ScriptableObject 数据资产，便于后期扩展。"
     ],
-    tags: ["Unity", "C#", "Roguelike", "ScriptableObject", "Dungeon", "Combat"],
+    tags: ["Unity", "C#", "Roguelike", "Dungeon", "Combat", "ScriptableObject"],
     stack: [
-      ["Engine", "Unity 2022.3 LTS, 2D Physics, Animator"],
-      ["Architecture", "MVC, 状态机, 事件总线, 对象池"],
-      ["Content", "Edgar.Unity 程序化地牢, ScriptableObject 数据资产"],
-      ["Feedback", "Cinemachine, Post Processing, 粒子特效, 触觉反馈"]
+      ["Engine", "Unity 2022.3 LTS / 2D Physics / Animator"],
+      ["Gameplay", "元素反应 / 随机增益 / Boss 节奏控制"],
+      ["Architecture", "MVC / 状态机 / 事件分发 / 数据驱动"],
+      ["Tools", "Edgar.Unity / Cinemachine / 粒子反馈"]
     ],
     systems: [
-      "水/冰元素状态系统：湿润、冰标记、冻结、易伤与解冻减速。",
-      "Roguelike 增益系统：属性、元素、续航三类构筑方向。",
-      "关卡推进系统：5 大关 x 5 小关，动态难度缩放与 Boss 阶段。",
-      "数据驱动工作流：CSV 到 ScriptableObject，便于调参和平衡。"
+      "元素状态系统：湿润、冻结、减速、易伤等状态可叠加、转换与解除。",
+      "Roguelike 构筑系统：围绕属性成长、元素强化与续航能力形成多流派路线。",
+      "关卡推进系统：大关与小关节奏分层，Boss 阶段设计与掉落反馈联动。",
+      "数据工作流：以可配置资产统一角色、敌人、关卡与掉落参数。 "
     ],
-    image: "",
-    gallery: [],
+    image: "./assets/images/万象回廊：元素封面.png",
+    gallery: [
+      "./assets/images/万象回廊：元素游戏演示.png",
+      "./assets/images/万象回廊：元素游戏演示 (2).png",
+      "./assets/images/万象回廊：元素游戏演示 (3).png",
+      "./assets/images/万象回廊：元素游戏演示 (4).png",
+      "./assets/images/万象回廊：元素游戏演示 (5).png",
+      "./assets/images/万象回廊：元素游戏演示 (6).png",
+      "./assets/images/万象回廊：元素游戏演示 (7).png",
+      "./assets/images/万象回廊：元素游戏演示 (8).png",
+      "./assets/images/万象回廊：元素游戏演示 (9).png",
+      "./assets/images/万象回廊：元素游戏演示 (10).png",
+      "./assets/images/万象回廊：元素游戏演示 (11).png",
+      "./assets/images/万象回廊：元素游戏演示 (12).png"
+    ],
+    video: "",
+    videoFallback: "./assets/videos/万象回廊：元素.mp4",
     link: "https://github.com/Cllent7/ElementKnight"
   },
   {
     id: "vr-room",
-    title: "数智润心坊",
+    title: "VR 心理疗愈",
     repo: "VR_Psychological_Room",
     type: "VR Psychological Support System",
     role: "VR 交互 / AI 语音闭环",
     period: "PICO / Unity VR",
-    award: "AI VR",
+    award: "重点作品",
     priority: "featured",
     summary:
-      "Unity + VR 沉浸式心理支持系统，通过虚拟空间帮助用户进行情绪调节、压力释放和正向引导。",
+      "将 VR 沉浸空间、自然语音交互与 AI 心理支持流程结合的疗愈型体验，强调真实表达、陪伴式反馈与空间氛围设计。",
     contribution:
-      "构建 AI 虚拟心理导师、语音输入输出闭环、VR 空间交互和场景体验流程，让用户在 VR 中以自然语音完成表达与反馈。",
+      "负责 AI 虚拟心理导师交互链路、VR 场景体验流、语音输入输出闭环与整体体验调性，让用户能在 VR 空间中以自然语言完成表达与反馈。",
     highlights: [
-      "Deepseek LLM + 精细化 Prompt 构建心理倾听者人设。",
-      "科大讯飞 STT/TTS 实现自然语音输入、AI 推理、拟真语音播报。",
-      "重构识别、流式请求、合成、播放异步链路，压缩交互延迟。"
+      "结合 Deepseek 大模型与精细化 Prompt，塑造稳定的陪伴式 AI 人设。",
+      "接入科大讯飞 STT/TTS，形成语音识别、AI 推理、语音播报的完整闭环。",
+      "优化识别、推理、合成与播放之间的异步时序，降低交互等待感。"
     ],
     tags: ["Unity VR", "PICO", "Deepseek", "STT", "TTS", "AI"],
     stack: [
-      ["Engine", "Unity VR, PICO 设备适配, XR 交互"],
-      ["AI", "Deepseek LLM, Prompt 角色设定, 流式对话"],
-      ["Voice", "科大讯飞 STT/TTS, 语音输入输出闭环"],
-      ["Performance", "异步链路, XAsset 加载, 内存峰值优化"]
+      ["Engine", "Unity VR / XR Interaction / PICO"],
+      ["AI", "Deepseek LLM / Prompt Design / 对话引导"],
+      ["Voice", "科大讯飞 STT / TTS / 音频链路管理"],
+      ["Experience", "沉浸空间 / 情绪释放 / 正念放松"]
     ],
     systems: [
-      "AI 虚拟心理导师：感知、认知、表达的多模态闭环。",
-      "语音交互管线：识别、请求、合成、播放、口型同步。",
-      "情绪释放空间：拳击、节奏互动、空间绘画等压力释放玩法。",
-      "正念放松空间：冥想、呼吸引导与自然沉浸场景。"
+      "AI 心理支持系统：围绕倾听、回应、引导建立陪伴式对话流程。",
+      "语音交互管线：识别、请求、合成、播放与状态过渡统一管理。",
+      "VR 体验空间：通过节奏、环境与视觉引导降低表达压力。",
+      "场景反馈系统：将语言、声音与空间氛围联动，形成完整疗愈感。 "
     ],
-    image:
-      "https://github.com/user-attachments/assets/366dbe98-d5ad-48b2-830a-fb8512dacf67",
+    image: "./assets/images/Vr心理疗愈封面.png",
     gallery: [
-      "https://github.com/user-attachments/assets/366dbe98-d5ad-48b2-830a-fb8512dacf67",
-      "https://github.com/user-attachments/assets/453b5631-2c43-4425-bcaf-1c0022b8f602",
-      "https://github.com/user-attachments/assets/b0d6cb34-5ff2-40aa-8f5c-6d97d560fc2e"
+      "./assets/images/Vr心理疗愈封面.png",
+      "./assets/images/Vr心理疗愈封面 (2).png"
     ],
+    video: "",
+    videoFallback: "./assets/videos/vr心理疗愈.mp4",
     link: "https://github.com/Cllent7/VR_Psychological_Room"
   },
   {
@@ -84,34 +99,35 @@ const projects = [
     award: "教育仿真",
     priority: "normal",
     summary:
-      "面向初高中物理课堂的 3D 交互式综合物理实验仿真软件，将抽象、危险或难以实操的实验做成可操作体验。",
+      "面向课堂场景的 3D 交互式物理实验仿真软件，把抽象公式与危险或难以复现实验转化为可观察、可操作、可验证的体验。",
     contribution:
-      "实现多个实验舱交互流程，围绕浮力、热学、自由落体和摩擦力建立可观察、可验证的仿真体验。",
+      "负责多个实验舱的交互流程与物理表现实现，围绕浮力、热学、自由落体和摩擦力建立教学可视化反馈。",
     highlights: [
-      "实时计算物体浸入水中的排开体积并施加动态浮力。",
-      "FSM 管理大厅接取任务、传送门加载、实验舱验证的闭环流程。",
-      "面向课堂教学场景设计，将公式理解转化为可交互验证。"
+      "实现浮力实验中排开体积与动态浮力施加的实时计算。",
+      "用 FSM 管理大厅、任务接取、传送门与实验验证流程。",
+      "以教学理解为目标设计交互反馈，让结论从公式转化为可感知过程。"
     ],
     tags: ["Unity 3D", "C#", "Physics", "FSM", "Education", "Simulation"],
     stack: [
-      ["Engine", "Unity 3D, Rigidbody, Collider, Physics Material"],
-      ["Simulation", "浮力算法, 热学模拟, 自由落体, 摩擦力验证"],
-      ["Flow", "FSM, 任务接取, 传送门, 实验舱验证"],
-      ["Delivery", "PC 端交互, 教育场景, Git 协同"]
+      ["Engine", "Unity 3D / Rigidbody / Collider / Raycast"],
+      ["Simulation", "浮力 / 热学 / 自由落体 / 摩擦力"],
+      ["Flow", "FSM / 任务引导 / 实验验证 / 场景切换"],
+      ["Delivery", "PC 教学软件 / Git 协作 / 场景组织"]
     ],
     systems: [
-      "浮力系统：实时计算排开体积并逐帧施加浮力。",
-      "热学系统：燃烧器、热气球、密度变化与升力反馈。",
-      "实验舱流程：大厅、任务、传送门和实验验证闭环。",
-      "教学反馈：把公式理解转化成可观察、可操作的互动结果。"
+      "浮力系统：根据排开液体体积与物体姿态逐帧计算并施加浮力。",
+      "热学系统：通过热气球、加热器与密度变化构建可见的实验反馈。",
+      "实验流程系统：大厅、任务、传送门与验证阶段形成完整闭环。",
+      "教学反馈系统：帮助学习者从观察、操作到验证理解物理结论。 "
     ],
-    image:
-      "https://github.com/user-attachments/assets/c3984317-0ead-4581-bdf4-6362aaa4f358",
+    image: "https://github.com/user-attachments/assets/c3984317-0ead-4581-bdf4-6362aaa4f358",
     gallery: [
       "https://github.com/user-attachments/assets/5c625901-884e-4663-b37c-f93f4933bf98",
       "https://github.com/user-attachments/assets/c3984317-0ead-4581-bdf4-6362aaa4f358",
       "https://github.com/user-attachments/assets/e83d97f3-83ff-477a-840a-b1012e70d118"
     ],
+    video: "",
+    videoFallback: "./assets/videos/物理幻境之旅.mp4",
     link: "https://github.com/Cllent7/Journey-through-the-Physical-Illusion"
   },
   {
@@ -120,38 +136,39 @@ const projects = [
     repo: "The-Great-Escape-of-Wisdom-and-Strength",
     type: "72h GameJam Puzzle Game",
     role: "副程序 / 关卡机制 / UI 框架",
-    period: "省级优胜奖",
-    award: "省级优胜奖",
+    period: "省级优秀奖",
+    award: "省级优秀奖",
     priority: "normal",
     summary:
-      "72 小时 GameJam 作品，2D 像素风非对称双人合作剧情解谜。两位角色围绕“力”与“智”的差异协作逃离养老院。",
+      "72 小时 GameJam 双人合作解谜作品，以力量与智慧角色的非对称能力配合为主题，兼顾剧情推进与关卡协作。",
     contribution:
-      "负责中后期第四、第五关白盒搭建与机制实现，完成多节点联动机关、跨组件状态同步和核心 UI 框架。",
+      "负责中后期第四、第五关白盒搭建与机关实现，完成多节点联动、状态同步与基础 UI 框架支持。",
     highlights: [
-      "省级大学生 GameJam 游戏创作大赛优胜奖。",
-      "非对称双人合作：力量角色推重物，智慧角色触发精细机关。",
-      "72 小时高压开发中完成机制验证、协作排期和快速迭代。"
+      "获省级大学生 GameJam 游戏创作赛事优秀奖。",
+      "围绕双角色差异化能力设计协作路线与机关解法。",
+      "在高压节奏中完成机制验证、关卡迭代与团队协同交付。"
     ],
     tags: ["Unity", "C#", "GameJam", "Puzzle", "UI", "Teamwork"],
     stack: [
-      ["Engine", "Unity 2D, Pixel Art, UGUI"],
-      ["Gameplay", "双人合作, 非对称能力, 多节点机关联动"],
-      ["Architecture", "跨组件状态同步, 关卡触发器, UI 框架"],
-      ["Production", "72 小时 GameJam, Git 协同, 快速迭代"]
+      ["Engine", "Unity 2D / Pixel Art / UGUI"],
+      ["Gameplay", "双人合作 / 非对称能力 / 机关联动"],
+      ["Architecture", "状态同步 / 触发器 / UI 框架"],
+      ["Production", "72h GameJam / Git 协作 / 快速迭代"]
     ],
     systems: [
-      "力与智双角色机制：一个负责重物与平台，一个负责按钮与精细机关。",
-      "第四、第五关机制：多节点触发、同步锁和白盒验证。",
-      "UI 框架：极限开发中保证流程提示和交互稳定。",
-      "团队协作：程序、策划、美术快速拆解需求并完成交付。"
+      "双角色机制：力量角色负责重物与平台，智慧角色负责精细机关触发。",
+      "后期关卡系统：多节点机关链、同步门锁与白盒验证配合推进。",
+      "UI 框架：在极短开发周期内提供必要提示与交互反馈。",
+      "团队工作流：程序、策划、美术快速对齐需求并及时交付。 "
     ],
-    image:
-      "https://github.com/user-attachments/assets/8eef7d58-4fc7-467b-bc23-32d1caabfa74",
+    image: "./assets/images/预制力逃封面.png",
     gallery: [
-      "https://github.com/user-attachments/assets/8eef7d58-4fc7-467b-bc23-32d1caabfa74",
-      "https://github.com/user-attachments/assets/bfa08abe-6487-4bff-9e7d-c9f6a8cf5a42",
-      "https://github.com/user-attachments/assets/a258e4c7-8c3a-41c1-86e9-0515455323ca"
+      "./assets/images/预制力逃封面.png",
+      "./assets/images/预制力逃封面.jpg",
+      "https://github.com/user-attachments/assets/bfa08abe-6487-4bff-9e7d-c9f6a8cf5a42"
     ],
+    video: "",
+    videoFallback: "./assets/videos/预智力逃.mp4",
     link: "https://github.com/Cllent7/The-Great-Escape-of-Wisdom-and-Strength"
   },
   {
@@ -164,34 +181,35 @@ const projects = [
     award: "CMIT 国赛三等奖",
     priority: "normal",
     summary:
-      "Unity 3D 第一人称生存射击游戏。玩家在废弃工厂中利用有限资源突破僵尸围堵，完成硬核生存挑战。",
+      "第一人称 3D 生存射击作品，围绕有限资源、僵尸追击与场景压迫感构建高强度战斗节奏。",
     contribution:
-      "独立完成射击体验、僵尸 AI 状态机、MVC 架构拆分、UGUI 战斗界面和多类型对象池优化。",
+      "独立完成射击体验、僵尸 AI 状态机、MVC 分层、战斗 UI 与对象池优化，确保项目既能跑通玩法，也能稳定演示。",
     highlights: [
-      "全国大学生 CMIT 数字媒体总决赛国赛三等奖。",
-      "NavMesh Agent 构建巡逻、发现、追击、攻击的 AI 状态流。",
-      "对象池管理子弹、僵尸、补给和特效，保障测试设备稳定 60FPS。"
+      "获得 CMIT 全国赛事三等奖。",
+      "使用 NavMesh Agent 组织巡逻、发现、追击、攻击等敌人 AI 行为。",
+      "通过对象池管理子弹、敌人、补给与特效，保证战斗阶段表现稳定。"
     ],
     tags: ["Unity", "C#", "FPS", "MVC", "NavMesh", "Object Pool"],
     stack: [
-      ["Engine", "Unity 3D, Physics, Raycast, UGUI"],
-      ["AI", "NavMesh Agent, 僵尸状态机, 巡逻/发现/追击/攻击"],
-      ["Architecture", "MVC 分层, 模块解耦, 战斗 UI 数据同步"],
-      ["Optimization", "多类型对象池, Instantiate/Destroy 控制, 60FPS"]
+      ["Engine", "Unity 3D / Physics / Raycast / UGUI"],
+      ["AI", "NavMesh Agent / 敌人状态机 / 追击逻辑"],
+      ["Architecture", "MVC 分层 / 模块拆分 / 战斗 UI 同步"],
+      ["Optimization", "对象池 / 特效复用 / 性能控制"]
     ],
     systems: [
-      "射击系统：物理弹道、碰撞反馈、射线拾取和补给交互。",
-      "僵尸 AI：巡逻、发现、追击、攻击的完整状态流。",
-      "资源系统：有限弹药、医疗包和道具补给形成生存压力。",
-      "性能系统：子弹、僵尸、补给和特效统一对象池调度。"
+      "射击系统：射线命中、碰撞反馈、补给拾取与资源压力共同塑造节奏。",
+      "敌人 AI：巡逻、发现、追击、攻击与失去目标后的状态回退完整闭环。",
+      "资源系统：弹药、医疗包与道具限制提升生存紧张感。",
+      "性能系统：统一对象池调度战斗中高频生成与销毁对象。 "
     ],
-    image:
-      "https://github.com/user-attachments/assets/013be876-ab5b-4ae3-b7a3-772ca88cd58b",
+    image: "https://github.com/user-attachments/assets/013be876-ab5b-4ae3-b7a3-772ca88cd58b",
     gallery: [
       "https://github.com/user-attachments/assets/013be876-ab5b-4ae3-b7a3-772ca88cd58b",
       "https://github.com/user-attachments/assets/763d6b5c-97b6-4645-a88e-43dd3a57955c",
       "https://github.com/user-attachments/assets/71ff4a21-de7e-45e1-8c88-68fe611106ca"
     ],
+    video: "",
+    videoFallback: "./assets/videos/废弃工厂的正义突袭.mp4",
     link: "https://github.com/Cllent7/The-Justice-Raid-of-the-Abandoned-Factory"
   }
 ];
@@ -205,8 +223,23 @@ const views = {
 const workGrid = document.querySelector("#workGrid");
 const workViewport = document.querySelector("#workViewport");
 const detailPanel = document.querySelector("#detailPanel");
-const cardOrder = ["vr-room", "physics-illusion", "element-knight", "wisdom-strength", "justice-raid"];
 const transitionFlare = document.querySelector("#transitionFlare");
+const cardOrder = ["vr-room", "physics-illusion", "element-knight", "wisdom-strength", "justice-raid"];
+
+function getProjectVideoSource(project) {
+  return project.video || project.videoFallback || "";
+}
+
+function openProjectById(projectId, origin) {
+  const project = projects.find((item) => item.id === projectId);
+
+  if (!project) {
+    return;
+  }
+
+  renderDetail(project);
+  activateView("detail", origin);
+}
 
 function activateView(name, origin) {
   if (origin) {
@@ -229,37 +262,61 @@ function renderTags(tags) {
 
 function mediaMarkup(project, className) {
   if (project.image) {
-    return `<img src="${project.image}" alt="${project.title} 项目图片" loading="lazy" />`;
+    return `<img src="${project.image}" alt="${project.title} 项目封面" loading="lazy" />`;
   }
 
   return `
     <div class="${className}">
       <strong>${project.title}</strong>
-      <small>图片占位 / 后续替换为实机截图</small>
+      <small>封面占位，后续可替换为项目主视觉</small>
     </div>
   `;
 }
 
 function galleryMarkup(project) {
-  if (project.gallery.length === 0) {
-    return `<div class="gallery-placeholder">图片组占位，后续放入截图</div>`;
+  if (!project.gallery || project.gallery.length === 0) {
+    return `<div class="gallery-placeholder">演示图占位，后续可继续补充截图</div>`;
   }
 
-  return project.gallery
-    .map((image) => `<img src="${image}" alt="${project.title} 项目截图" loading="lazy" />`)
-    .join("");
+  if (project.gallery.length === 1) {
+    return `
+      <div class="gallery-static">
+        <img src="${project.gallery[0]}" alt="${project.title} 项目截图" loading="lazy" />
+      </div>
+    `;
+  }
+
+  const loopGallery = [...project.gallery, ...project.gallery];
+
+  return `
+    <div class="detail-gallery-viewport" id="detailGalleryViewport" aria-label="${project.title} 演示图集">
+      <div class="detail-gallery-track" id="detailGalleryTrack">
+        ${loopGallery
+          .map(
+            (image, index) => `
+              <figure class="gallery-item">
+                <img src="${image}" alt="${project.title} 项目截图 ${index + 1}" loading="lazy" />
+              </figure>
+            `
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
 }
 
 function videoMarkup(project) {
-  if (project.video) {
-    return `<video class="project-video" src="${project.video}" controls playsinline preload="metadata"></video>`;
+  const source = getProjectVideoSource(project);
+
+  if (source) {
+    return `<video class="project-video" src="${source}" controls playsinline preload="metadata"></video>`;
   }
 
   return `
     <div class="video-placeholder">
       <span class="play-core"></span>
-      <strong>视频坑位</strong>
-      <small>后续替换为 ${project.title} 的演示视频</small>
+      <strong>视频占位</strong>
+      <small>后续把 ${project.title} 的演示视频放到 assets/videos 即可</small>
     </div>
   `;
 }
@@ -274,7 +331,8 @@ function renderWorkCards() {
     .map((project, index) => {
       const background = project.image ? `url(${project.image})` : "none";
       const placeholderClass = project.image ? "" : "placeholder-card";
-      const priorityClass = project.priority === "core" ? "is-core" : project.priority === "featured" ? "is-featured" : "";
+      const priorityClass =
+        project.priority === "core" ? "is-core" : project.priority === "featured" ? "is-featured" : "";
       const displayIndex = String((index % orderedProjects.length) + 1).padStart(2, "0");
 
       return `
@@ -300,16 +358,6 @@ function renderWorkCards() {
       const rect = card.getBoundingClientRect();
       card.style.setProperty("--x", `${event.clientX - rect.left}px`);
       card.style.setProperty("--y", `${event.clientY - rect.top}px`);
-    });
-
-    card.addEventListener("click", () => {
-      if (dragDistance > 8) {
-        return;
-      }
-
-      const project = projects.find((item) => item.id === card.dataset.project);
-      renderDetail(project);
-      activateView("detail", card);
     });
   });
 }
@@ -370,20 +418,26 @@ function renderDetail(project) {
       </section>
 
       <section class="detail-section media-section">
-        <h3>视频与图片</h3>
+        <h3>视频与演示图</h3>
         ${videoMarkup(project)}
         <div class="gallery-strip">${galleryMarkup(project)}</div>
       </section>
     </div>
   `;
+
+  setupDetailGallery();
 }
 
-document.querySelector("#openProfile").addEventListener("click", () => activateView("profile"));
-document.querySelector("#backToHome").addEventListener("click", () => activateView("home"));
-document.querySelector("#backFromProfile").addEventListener("click", () => activateView("home"));
+document.querySelector("#openProfile").addEventListener("click", (event) => activateView("profile", event.currentTarget));
+document.querySelector("#backToHome").addEventListener("click", (event) => {
+  stopDetailGallery();
+  activateView("home", event.currentTarget);
+});
+document.querySelector("#backFromProfile").addEventListener("click", (event) => activateView("home", event.currentTarget));
 
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !views.home.classList.contains("is-active")) {
+    stopDetailGallery();
     activateView("home");
   }
 });
@@ -392,13 +446,14 @@ renderWorkCards();
 
 let carouselOffset = 0;
 let carouselHalfWidth = 0;
-let lastCarouselTime = 0;
+let carouselLastTime = 0;
+let carouselFrame = 0;
 let isDraggingCarousel = false;
 let isHoveringCarousel = false;
-let dragStartX = 0;
-let dragStartOffset = 0;
-let dragDistance = 0;
-let carouselFrame = 0;
+let carouselDragStartX = 0;
+let carouselDragStartOffset = 0;
+let carouselDragDistance = 0;
+let carouselPointerDownProjectId = "";
 
 function normalizeCarouselOffset() {
   if (carouselHalfWidth <= 0) {
@@ -421,12 +476,12 @@ function measureCarousel() {
 }
 
 function animateCarousel(time) {
-  if (!lastCarouselTime) {
-    lastCarouselTime = time;
+  if (!carouselLastTime) {
+    carouselLastTime = time;
   }
 
-  const delta = time - lastCarouselTime;
-  lastCarouselTime = time;
+  const delta = time - carouselLastTime;
+  carouselLastTime = time;
 
   if (!isDraggingCarousel && !isHoveringCarousel) {
     carouselOffset -= delta * 0.028;
@@ -443,9 +498,10 @@ function getPointerX(event) {
 
 function startCarouselDrag(event) {
   isDraggingCarousel = true;
-  dragStartX = getPointerX(event);
-  dragStartOffset = carouselOffset;
-  dragDistance = 0;
+  carouselDragStartX = getPointerX(event);
+  carouselDragStartOffset = carouselOffset;
+  carouselDragDistance = 0;
+  carouselPointerDownProjectId = event.target.closest(".work-card")?.dataset.project || "";
   workViewport.classList.add("is-dragging");
 }
 
@@ -455,15 +511,36 @@ function moveCarouselDrag(event) {
   }
 
   const currentX = getPointerX(event);
-  dragDistance = Math.max(dragDistance, Math.abs(currentX - dragStartX));
-  carouselOffset = dragStartOffset + currentX - dragStartX;
+  carouselDragDistance = Math.max(carouselDragDistance, Math.abs(currentX - carouselDragStartX));
+  carouselOffset = carouselDragStartOffset + currentX - carouselDragStartX;
   normalizeCarouselOffset();
   workGrid.style.transform = `translate3d(${carouselOffset}px, 0, 0)`;
 }
 
-function endCarouselDrag() {
+function endCarouselDrag(event) {
+  let releasedProjectId = "";
+
+  if (event && typeof event.clientX === "number" && typeof event.clientY === "number") {
+    releasedProjectId = document.elementFromPoint(event.clientX, event.clientY)?.closest(".work-card")?.dataset.project || "";
+  }
+
+  if (event && typeof event.pointerId === "number" && workViewport.hasPointerCapture(event.pointerId)) {
+    workViewport.releasePointerCapture(event.pointerId);
+  }
+
+  const shouldOpenProject =
+    carouselDragDistance <= 8 &&
+    carouselPointerDownProjectId &&
+    releasedProjectId &&
+    carouselPointerDownProjectId === releasedProjectId;
+
   isDraggingCarousel = false;
   workViewport.classList.remove("is-dragging");
+  carouselPointerDownProjectId = "";
+
+  if (shouldOpenProject) {
+    openProjectById(releasedProjectId, document.querySelector(`[data-project="${releasedProjectId}"]`));
+  }
 }
 
 workViewport.addEventListener("mouseenter", () => {
@@ -490,7 +567,155 @@ workViewport.addEventListener("pointercancel", endCarouselDrag);
 
 measureCarousel();
 carouselFrame = requestAnimationFrame(animateCarousel);
-window.addEventListener("resize", measureCarousel);
+
+let detailGalleryViewport = null;
+let detailGalleryTrack = null;
+let detailGalleryOffset = 0;
+let detailGalleryHalfWidth = 0;
+let detailGalleryLastTime = 0;
+let detailGalleryFrame = 0;
+let isHoveringDetailGallery = false;
+let isDraggingDetailGallery = false;
+let detailGalleryDragStartX = 0;
+let detailGalleryDragStartOffset = 0;
+
+function stopDetailGallery() {
+  if (detailGalleryFrame) {
+    cancelAnimationFrame(detailGalleryFrame);
+    detailGalleryFrame = 0;
+  }
+}
+
+function normalizeDetailGalleryOffset() {
+  if (detailGalleryHalfWidth <= 0) {
+    return;
+  }
+
+  while (detailGalleryOffset > 0) {
+    detailGalleryOffset -= detailGalleryHalfWidth;
+  }
+
+  while (detailGalleryOffset <= -detailGalleryHalfWidth) {
+    detailGalleryOffset += detailGalleryHalfWidth;
+  }
+}
+
+function syncDetailGalleryTransform() {
+  if (detailGalleryTrack) {
+    detailGalleryTrack.style.transform = `translate3d(${detailGalleryOffset}px, 0, 0)`;
+  }
+}
+
+function measureDetailGallery() {
+  if (!detailGalleryTrack) {
+    return;
+  }
+
+  detailGalleryHalfWidth = detailGalleryTrack.scrollWidth / 2;
+  normalizeDetailGalleryOffset();
+  syncDetailGalleryTransform();
+}
+
+function animateDetailGallery(time) {
+  if (!detailGalleryTrack) {
+    return;
+  }
+
+  if (!detailGalleryLastTime) {
+    detailGalleryLastTime = time;
+  }
+
+  const delta = time - detailGalleryLastTime;
+  detailGalleryLastTime = time;
+
+  if (!isHoveringDetailGallery && !isDraggingDetailGallery) {
+    detailGalleryOffset -= delta * 0.024;
+    normalizeDetailGalleryOffset();
+    syncDetailGalleryTransform();
+  }
+
+  detailGalleryFrame = requestAnimationFrame(animateDetailGallery);
+}
+
+function startDetailGalleryDrag(event) {
+  isDraggingDetailGallery = true;
+  detailGalleryDragStartX = getPointerX(event);
+  detailGalleryDragStartOffset = detailGalleryOffset;
+  detailGalleryViewport.classList.add("is-dragging");
+}
+
+function moveDetailGalleryDrag(event) {
+  if (!isDraggingDetailGallery) {
+    return;
+  }
+
+  const currentX = getPointerX(event);
+  detailGalleryOffset = detailGalleryDragStartOffset + currentX - detailGalleryDragStartX;
+  normalizeDetailGalleryOffset();
+  syncDetailGalleryTransform();
+}
+
+function endDetailGalleryDrag(event) {
+  if (!detailGalleryViewport) {
+    return;
+  }
+
+  if (event && typeof event.pointerId === "number" && detailGalleryViewport.hasPointerCapture(event.pointerId)) {
+    detailGalleryViewport.releasePointerCapture(event.pointerId);
+  }
+
+  isDraggingDetailGallery = false;
+  detailGalleryViewport.classList.remove("is-dragging");
+}
+
+function setupDetailGallery() {
+  stopDetailGallery();
+
+  detailGalleryViewport = detailPanel.querySelector("#detailGalleryViewport");
+  detailGalleryTrack = detailPanel.querySelector("#detailGalleryTrack");
+  detailGalleryOffset = 0;
+  detailGalleryHalfWidth = 0;
+  detailGalleryLastTime = 0;
+  isHoveringDetailGallery = false;
+  isDraggingDetailGallery = false;
+
+  if (!detailGalleryViewport || !detailGalleryTrack) {
+    return;
+  }
+
+  measureDetailGallery();
+
+  detailGalleryViewport.addEventListener("mouseenter", () => {
+    isHoveringDetailGallery = true;
+  });
+
+  detailGalleryViewport.addEventListener("mouseleave", () => {
+    isHoveringDetailGallery = false;
+    isDraggingDetailGallery = false;
+    detailGalleryViewport.classList.remove("is-dragging");
+  });
+
+  detailGalleryViewport.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) {
+      return;
+    }
+
+    detailGalleryViewport.setPointerCapture(event.pointerId);
+    startDetailGalleryDrag(event);
+  });
+
+  detailGalleryViewport.addEventListener("pointermove", moveDetailGalleryDrag);
+  detailGalleryViewport.addEventListener("pointerup", endDetailGalleryDrag);
+  detailGalleryViewport.addEventListener("pointercancel", endDetailGalleryDrag);
+
+  detailGalleryFrame = requestAnimationFrame(animateDetailGallery);
+}
+
+window.addEventListener("resize", () => {
+  measureCarousel();
+  measureDetailGallery();
+  resizeCanvas();
+});
 
 const canvas = document.querySelector("#sandCanvas");
 const context = canvas.getContext("2d");
@@ -533,6 +758,7 @@ function drawSand(time) {
     bandGradient.addColorStop(0, "rgba(98,230,211,0)");
     bandGradient.addColorStop(0.45, band % 2 === 0 ? "rgba(98,230,211,0.07)" : "rgba(158,123,255,0.065)");
     bandGradient.addColorStop(1, "rgba(245,182,91,0)");
+
     context.save();
     context.translate(Math.sin(time * 0.00016 + band) * 70, y);
     context.rotate(-0.16 + band * 0.018);
@@ -553,11 +779,7 @@ function drawSand(time) {
       particle.y = Math.random() * window.innerHeight;
     }
 
-    const colors = [
-      "rgba(98,230,211,0.34)",
-      "rgba(158,123,255,0.28)",
-      "rgba(245,182,91,0.26)"
-    ];
+    const colors = ["rgba(98,230,211,0.34)", "rgba(158,123,255,0.28)", "rgba(245,182,91,0.26)"];
 
     context.strokeStyle = colors[particle.hue].replace("0.", "0.18");
     context.lineWidth = Math.max(0.4, particle.size * 0.45);
@@ -577,4 +799,3 @@ function drawSand(time) {
 
 resizeCanvas();
 drawSand(0);
-window.addEventListener("resize", resizeCanvas);

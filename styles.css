@@ -867,8 +867,7 @@ img {
 
 .gallery-strip {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: 14px;
 }
 
 .gallery-strip img,
@@ -882,9 +881,80 @@ img {
 
 .gallery-placeholder {
   display: grid;
-  grid-column: 1 / -1;
   place-items: center;
   color: var(--muted);
+}
+
+.gallery-static img {
+  width: 100%;
+  min-height: 240px;
+  max-height: 52vh;
+  object-fit: cover;
+}
+
+.detail-gallery-viewport {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 0 12px;
+  cursor: grab;
+  user-select: none;
+  mask-image: linear-gradient(90deg, transparent, black 7%, black 93%, transparent);
+}
+
+.detail-gallery-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.detail-gallery-viewport::before,
+.detail-gallery-viewport::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 80px;
+  pointer-events: none;
+  content: "";
+}
+
+.detail-gallery-viewport::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(6, 8, 13, 0.92), transparent);
+}
+
+.detail-gallery-viewport::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(6, 8, 13, 0.92), transparent);
+}
+
+.detail-gallery-track {
+  display: flex;
+  width: max-content;
+  gap: 12px;
+  will-change: transform;
+}
+
+.gallery-item {
+  flex: 0 0 clamp(240px, 24vw, 360px);
+  margin: 0;
+}
+
+.gallery-item img {
+  width: 100%;
+  min-height: 220px;
+  height: clamp(220px, 24vw, 320px);
+  object-fit: cover;
+  transition:
+    transform 280ms ease,
+    border-color 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.gallery-item:hover img {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(98, 230, 211, 0.32);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(98, 230, 211, 0.16);
 }
 
 .repo-link {
@@ -1035,9 +1105,12 @@ img {
     font-size: 54px;
   }
 
-  .gallery-strip,
   .stack-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery-item {
+    flex-basis: 82vw;
   }
 
   .work-card {
