@@ -30,23 +30,23 @@ const projects = [
       "关卡推进系统：大关与小关节奏分层，Boss 阶段设计与掉落反馈联动。",
       "数据工作流：以可配置资产统一角色、敌人、关卡与掉落参数。 "
     ],
-    image: "./assets/images/万象回廊：元素封面.png",
+    image: "./assets/images/optimized/element-knight-cover-2064.webp",
     gallery: [
-      "./assets/images/万象回廊：元素游戏演示.png",
-      "./assets/images/万象回廊：元素游戏演示 (2).png",
-      "./assets/images/万象回廊：元素游戏演示 (3).png",
-      "./assets/images/万象回廊：元素游戏演示 (4).png",
-      "./assets/images/万象回廊：元素游戏演示 (5).png",
-      "./assets/images/万象回廊：元素游戏演示 (6).png",
-      "./assets/images/万象回廊：元素游戏演示 (7).png",
-      "./assets/images/万象回廊：元素游戏演示 (8).png",
-      "./assets/images/万象回廊：元素游戏演示 (9).png",
-      "./assets/images/万象回廊：元素游戏演示 (10).png",
-      "./assets/images/万象回廊：元素游戏演示 (11).png",
-      "./assets/images/万象回廊：元素游戏演示 (12).png"
+      "./assets/images/optimized/element-knight-gallery-01.webp",
+      "./assets/images/optimized/element-knight-gallery-02.webp",
+      "./assets/images/optimized/element-knight-gallery-03.webp",
+      "./assets/images/optimized/element-knight-gallery-04.webp",
+      "./assets/images/optimized/element-knight-gallery-05.webp",
+      "./assets/images/optimized/element-knight-gallery-06.webp",
+      "./assets/images/optimized/element-knight-gallery-07.webp",
+      "./assets/images/optimized/element-knight-gallery-08.webp",
+      "./assets/images/optimized/element-knight-gallery-09.webp",
+      "./assets/images/optimized/element-knight-gallery-10.webp",
+      "./assets/images/optimized/element-knight-gallery-11.webp",
+      "./assets/images/optimized/element-knight-gallery-12.webp"
     ],
-    video: "",
-    videoFallback: "./assets/videos/万象回廊：元素.mp4",
+    video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/element-knight.mp4",
+    videoFallback: "./assets/videos/element-knight.mp4",
     link: "https://github.com/Cllent7/ElementKnight"
   },
   {
@@ -80,13 +80,24 @@ const projects = [
       "VR 体验空间：通过节奏、环境与视觉引导降低表达压力。",
       "场景反馈系统：将语言、声音与空间氛围联动，形成完整疗愈感。 "
     ],
-    image: "./assets/images/Vr心理疗愈封面.png",
+    image: "./assets/images/optimized/vr-room-cover.webp",
     gallery: [
-      "./assets/images/Vr心理疗愈封面.png",
-      "./assets/images/Vr心理疗愈封面 (2).png"
+      "./assets/images/optimized/vr-room-gallery-01.webp",
+      "./assets/images/optimized/vr-room-gallery-02.webp",
+      "./assets/images/optimized/vr-room-gallery-03.webp",
+      "./assets/images/optimized/vr-room-gallery-04.webp",
+      "./assets/images/optimized/vr-room-gallery-05.webp",
+      "./assets/images/optimized/vr-room-gallery-06.webp",
+      "./assets/images/optimized/vr-room-gallery-07.webp",
+      "./assets/images/optimized/vr-room-gallery-08.webp",
+      "./assets/images/optimized/vr-room-gallery-09.webp",
+      "./assets/images/optimized/vr-room-gallery-10.webp",
+      "./assets/images/optimized/vr-room-gallery-11.webp",
+      "./assets/images/optimized/vr-room-gallery-12.webp",
+      "./assets/images/optimized/vr-room-gallery-13.webp"
     ],
-    video: "",
-    videoFallback: "./assets/videos/vr心理疗愈.mp4",
+    video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/vr-room.mp4",
+    videoFallback: "./assets/videos/vr-room.mp4",
     link: "https://github.com/Cllent7/VR_Psychological_Room"
   },
   {
@@ -120,14 +131,14 @@ const projects = [
       "实验流程系统：大厅、任务、传送门与验证阶段形成完整闭环。",
       "教学反馈系统：帮助学习者从观察、操作到验证理解物理结论。 "
     ],
-    image: "https://github.com/user-attachments/assets/c3984317-0ead-4581-bdf4-6362aaa4f358",
+    image: "./assets/images/optimized/physics-illusion-cover.webp",
     gallery: [
-      "https://github.com/user-attachments/assets/5c625901-884e-4663-b37c-f93f4933bf98",
-      "https://github.com/user-attachments/assets/c3984317-0ead-4581-bdf4-6362aaa4f358",
-      "https://github.com/user-attachments/assets/e83d97f3-83ff-477a-840a-b1012e70d118"
+      "./assets/images/optimized/physics-illusion-gallery-01.webp",
+      "./assets/images/optimized/physics-illusion-gallery-02.webp",
+      "./assets/images/optimized/physics-illusion-gallery-03.webp"
     ],
-    video: "",
-    videoFallback: "./assets/videos/物理幻境之旅.mp4",
+    video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/physics-illusion.mp4",
+    videoFallback: "./assets/videos/physics-illusion.mp4",
     link: "https://github.com/Cllent7/Journey-through-the-Physical-Illusion"
   },
   {
@@ -161,14 +172,20 @@ const projects = [
       "UI 框架：在极短开发周期内提供必要提示与交互反馈。",
       "团队工作流：程序、策划、美术快速对齐需求并及时交付。 "
     ],
-    image: "./assets/images/预制力逃封面.png",
+    image: "./assets/images/optimized/wisdom-strength-cover.webp",
     gallery: [
-      "./assets/images/预制力逃封面.png",
-      "./assets/images/预制力逃封面.jpg",
-      "https://github.com/user-attachments/assets/bfa08abe-6487-4bff-9e7d-c9f6a8cf5a42"
+      "./assets/images/optimized/wisdom-strength-gallery-01.webp",
+      "./assets/images/optimized/wisdom-strength-gallery-02.webp",
+      "./assets/images/optimized/wisdom-strength-gallery-03.webp",
+      "./assets/images/optimized/wisdom-strength-gallery-04.webp",
+      "./assets/images/optimized/wisdom-strength-gallery-05.webp",
+      "./assets/images/optimized/wisdom-strength-gallery-06.webp",
+      "./assets/images/optimized/wisdom-strength-gallery-07.webp",
+      "./assets/images/optimized/wisdom-strength-gallery-08.webp",
+      "./assets/images/optimized/wisdom-strength-gallery-09.webp"
     ],
-    video: "",
-    videoFallback: "./assets/videos/预智力逃.mp4",
+    video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/wisdom-strength.mp4",
+    videoFallback: "./assets/videos/wisdom-strength.mp4",
     link: "https://github.com/Cllent7/The-Great-Escape-of-Wisdom-and-Strength"
   },
   {
@@ -202,14 +219,25 @@ const projects = [
       "资源系统：弹药、医疗包与道具限制提升生存紧张感。",
       "性能系统：统一对象池调度战斗中高频生成与销毁对象。 "
     ],
-    image: "https://github.com/user-attachments/assets/013be876-ab5b-4ae3-b7a3-772ca88cd58b",
+    image: "./assets/images/optimized/justice-raid-cover-new.webp",
     gallery: [
-      "https://github.com/user-attachments/assets/013be876-ab5b-4ae3-b7a3-772ca88cd58b",
-      "https://github.com/user-attachments/assets/763d6b5c-97b6-4645-a88e-43dd3a57955c",
-      "https://github.com/user-attachments/assets/71ff4a21-de7e-45e1-8c88-68fe611106ca"
+      "./assets/images/optimized/justice-raid-gallery-01.webp",
+      "./assets/images/optimized/justice-raid-gallery-02.webp",
+      "./assets/images/optimized/justice-raid-gallery-03.webp",
+      "./assets/images/optimized/justice-raid-gallery-04.webp",
+      "./assets/images/optimized/justice-raid-gallery-05.webp",
+      "./assets/images/optimized/justice-raid-gallery-06.webp",
+      "./assets/images/optimized/justice-raid-gallery-07.webp",
+      "./assets/images/optimized/justice-raid-gallery-08.webp",
+      "./assets/images/optimized/justice-raid-gallery-09.webp",
+      "./assets/images/optimized/justice-raid-gallery-10.webp",
+      "./assets/images/optimized/justice-raid-gallery-11.webp",
+      "./assets/images/optimized/justice-raid-gallery-12.webp",
+      "./assets/images/optimized/justice-raid-gallery-13.webp",
+      "./assets/images/optimized/justice-raid-gallery-14.webp"
     ],
-    video: "",
-    videoFallback: "./assets/videos/废弃工厂的正义突袭.mp4",
+    video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/justice-raid.mp4",
+    videoFallback: "./assets/videos/justice-raid.mp4",
     link: "https://github.com/Cllent7/The-Justice-Raid-of-the-Abandoned-Factory"
   }
 ];
@@ -309,7 +337,7 @@ function videoMarkup(project) {
   const source = getProjectVideoSource(project);
 
   if (source) {
-    return `<video class="project-video" src="${source}" controls playsinline preload="metadata"></video>`;
+    return `<video class="project-video" src="${source}" poster="${project.image || ""}" controls playsinline preload="none"></video>`;
   }
 
   return `
