@@ -786,18 +786,29 @@ const context = canvas.getContext("2d");
 let particles = [];
 let animationFrame = 0;
 
+let isMobileDevice = false;
+
 function resizeCanvas() {
-  const isMobile = window.innerWidth < 768;
-  const ratio = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+  isMobileDevice = window.innerWidth < 768;
+
+  if (isMobileDevice) {
+    canvas.style.display = "none";
+    if (animationFrame) {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = 0;
+    }
+    return;
+  }
+
+  canvas.style.display = "";
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
   canvas.width = Math.floor(window.innerWidth * ratio);
   canvas.height = Math.floor(window.innerHeight * ratio);
   canvas.style.width = `${window.innerWidth}px`;
   canvas.style.height = `${window.innerHeight}px`;
   context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-  const count = isMobile
-    ? Math.min(80, Math.floor(window.innerWidth / 8))
-    : Math.min(260, Math.max(130, Math.floor(window.innerWidth / 7)));
+  const count = Math.min(260, Math.max(130, Math.floor(window.innerWidth / 7)));
   particles = Array.from({ length: count }, (_, index) => ({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
@@ -810,6 +821,10 @@ function resizeCanvas() {
 }
 
 function drawSand(time) {
+  if (isMobileDevice) {
+    return;
+  }
+
   context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
   const gradient = context.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
