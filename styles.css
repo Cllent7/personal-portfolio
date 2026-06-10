@@ -1284,6 +1284,8 @@ img {
   }
 
   .work-viewport {
+    min-height: auto;
+    padding: 8px 0 18px;
     mask-image: linear-gradient(90deg, transparent, black 3%, black 97%, transparent);
     cursor: auto;
     touch-action: auto;

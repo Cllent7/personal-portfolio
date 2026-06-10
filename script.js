@@ -627,10 +627,13 @@ workViewport.addEventListener("mouseleave", () => {
 });
 
 workViewport.addEventListener("pointerdown", (event) => {
-  if (window.innerWidth <= 680) {
+  if (event.button !== 0) {
     return;
   }
-  if (event.button !== 0) {
+
+  if (window.innerWidth <= 680) {
+    carouselPointerDownProjectId = event.target.closest(".work-card")?.dataset.project || "";
+    carouselDragDistance = 0;
     return;
   }
 
@@ -657,7 +660,10 @@ function getCardStep() {
 
 function snapCarousel(direction) {
   const step = getCardStep();
-  carouselOffset += direction * step;
+  // Snap to nearest card boundary then move one card
+  const rawIndex = Math.round(-carouselOffset / step);
+  const targetIndex = rawIndex + direction;
+  carouselOffset = -(targetIndex * step);
   normalizeCarouselOffset();
   workGrid.style.transition = "transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1)";
   workGrid.style.transform = "translate3d(" + carouselOffset + "px, 0, 0)";
