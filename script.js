@@ -627,6 +627,9 @@ workViewport.addEventListener("mouseleave", () => {
 });
 
 workViewport.addEventListener("pointerdown", (event) => {
+  if (window.innerWidth <= 680) {
+    return;
+  }
   if (event.button !== 0) {
     return;
   }
@@ -641,6 +644,42 @@ workViewport.addEventListener("pointercancel", endCarouselDrag);
 
 measureCarousel();
 carouselFrame = requestAnimationFrame(animateCarousel);
+
+/* 手机端左右箭头按钮 */
+function getCardStep() {
+  const card = workGrid.querySelector(".work-card");
+  if (!card) {
+    return 300;
+  }
+  const gap = 18;
+  return card.offsetWidth + gap;
+}
+
+function snapCarousel(direction) {
+  const step = getCardStep();
+  carouselOffset += direction * step;
+  normalizeCarouselOffset();
+  workGrid.style.transition = "transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1)";
+  workGrid.style.transform = "translate3d(" + carouselOffset + "px, 0, 0)";
+  setTimeout(function () {
+    workGrid.style.transition = "";
+  }, 360);
+}
+
+var carouselLeftBtn = document.getElementById("carouselLeft");
+var carouselRightBtn = document.getElementById("carouselRight");
+
+if (carouselLeftBtn) {
+  carouselLeftBtn.addEventListener("click", function () {
+    snapCarousel(1);
+  });
+}
+
+if (carouselRightBtn) {
+  carouselRightBtn.addEventListener("click", function () {
+    snapCarousel(-1);
+  });
+}
 
 let detailGalleryViewport = null;
 let detailGalleryTrack = null;
