@@ -679,7 +679,6 @@ function snapCarousel(direction) {
   setTimeout(function () {
     workGrid.style.transition = "";
     isSnappingCarousel = false;
-    carouselLastTime = 0;
   }, 360);
 }
 
