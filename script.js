@@ -560,11 +560,19 @@ function getPointerX(event) {
 }
 
 function startCarouselDrag(event) {
+  event.preventDefault();
   isDraggingCarousel = true;
   carouselDragStartX = getPointerX(event);
   carouselDragStartOffset = carouselOffset;
   carouselDragDistance = 0;
   carouselPointerDownProjectId = event.target.closest(".work-card")?.dataset.project || "";
+
+  const touchedCard = event.target.closest(".work-card");
+  if (touchedCard) {
+    document.querySelectorAll(".work-card.is-touched").forEach(function (c) { c.classList.remove("is-touched"); });
+    touchedCard.classList.add("is-touched");
+  }
+
   workViewport.classList.add("is-dragging");
 }
 
@@ -573,6 +581,7 @@ function moveCarouselDrag(event) {
     return;
   }
 
+  event.preventDefault();
   const currentX = getPointerX(event);
   carouselDragDistance = Math.max(carouselDragDistance, Math.abs(currentX - carouselDragStartX));
   carouselOffset = carouselDragStartOffset + currentX - carouselDragStartX;
@@ -600,6 +609,8 @@ function endCarouselDrag(event) {
   isDraggingCarousel = false;
   workViewport.classList.remove("is-dragging");
   carouselPointerDownProjectId = "";
+
+  document.querySelectorAll(".work-card.is-touched").forEach(function (c) { c.classList.remove("is-touched"); });
 
   if (shouldOpenProject) {
     openProjectById(releasedProjectId, document.querySelector(`[data-project="${releasedProjectId}"]`));
@@ -701,6 +712,7 @@ function animateDetailGallery(time) {
 }
 
 function startDetailGalleryDrag(event) {
+  event.preventDefault();
   isDraggingDetailGallery = true;
   detailGalleryDragStartX = getPointerX(event);
   detailGalleryDragStartOffset = detailGalleryOffset;
@@ -712,6 +724,7 @@ function moveDetailGalleryDrag(event) {
     return;
   }
 
+  event.preventDefault();
   const currentX = getPointerX(event);
   detailGalleryOffset = detailGalleryDragStartOffset + currentX - detailGalleryDragStartX;
   normalizeDetailGalleryOffset();

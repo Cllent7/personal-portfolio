@@ -259,6 +259,9 @@ img {
   padding: 18px 0 42px;
   cursor: grab;
   user-select: none;
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
   mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
 }
 
@@ -384,7 +387,8 @@ img {
   transition: transform 260ms ease;
 }
 
-.work-card:hover {
+.work-card:hover,
+.work-card.is-touched {
   z-index: 12;
   flex-basis: clamp(420px, 38vw, 620px);
   border-color: rgba(98, 230, 211, 0.42);
@@ -394,16 +398,19 @@ img {
   transform: translateY(-16px) scale(1.02);
 }
 
-.work-card:hover::before {
+.work-card:hover::before,
+.work-card.is-touched::before {
   filter: saturate(1.08) brightness(0.94);
   transform: scale(1.08);
 }
 
-.work-card:hover::after {
+.work-card:hover::after,
+.work-card.is-touched::after {
   opacity: 1;
 }
 
-.work-card:hover .work-card-content::before {
+.work-card:hover .work-card-content::before,
+.work-card.is-touched .work-card-content::before {
   transform: scaleX(1);
 }
 
@@ -519,7 +526,9 @@ img {
 }
 
 .work-card:hover small,
-.work-card:hover .card-tags {
+.work-card:hover .card-tags,
+.work-card.is-touched small,
+.work-card.is-touched .card-tags {
   max-height: 120px;
   opacity: 1;
   transform: translateY(0);
@@ -558,7 +567,8 @@ img {
     transform 220ms ease;
 }
 
-.work-card:hover .hover-hint {
+.work-card:hover .hover-hint,
+.work-card.is-touched .hover-hint {
   opacity: 1;
   transform: translateY(0);
 }
@@ -975,6 +985,9 @@ img {
   padding: 10px 0 12px;
   cursor: grab;
   user-select: none;
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
   mask-image: linear-gradient(90deg, transparent, black 7%, black 93%, transparent);
 }
 
