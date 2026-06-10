@@ -511,6 +511,7 @@ let carouselOffset = 0;
 let carouselHalfWidth = 0;
 let carouselLastTime = 0;
 let carouselFrame = 0;
+let isSnappingCarousel = false;
 let isDraggingCarousel = false;
 let isHoveringCarousel = false;
 let carouselDragStartX = 0;
@@ -546,7 +547,7 @@ function animateCarousel(time) {
   const delta = time - carouselLastTime;
   carouselLastTime = time;
 
-  if (!isDraggingCarousel && !isHoveringCarousel) {
+  if (!isDraggingCarousel && !isHoveringCarousel && !isSnappingCarousel) {
     carouselOffset -= delta * 0.028;
     normalizeCarouselOffset();
     workGrid.style.transform = `translate3d(${carouselOffset}px, 0, 0)`;
@@ -659,16 +660,26 @@ function getCardStep() {
 }
 
 function snapCarousel(direction) {
-  const step = getCardStep();
-  // Snap to nearest card boundary then move one card
-  const rawIndex = Math.round(-carouselOffset / step);
-  const targetIndex = rawIndex + direction;
-  carouselOffset = -(targetIndex * step);
+  var step = getCardStep();
+  var card = workGrid.querySelector(".work-card");
+  var cardWidth = card ? card.offsetWidth : 280;
+  var viewportWidth = workViewport.clientWidth;
+  // Center the current card in the viewport
+  var centerOffset = (viewportWidth - cardWidth) / 2;
+
+  // Find nearest aligned card index, account for center offset
+  var rawIndex = Math.round((centerOffset - carouselOffset) / step);
+  var targetIndex = rawIndex + direction;
+  carouselOffset = centerOffset - (targetIndex * step);
   normalizeCarouselOffset();
+
+  isSnappingCarousel = true;
   workGrid.style.transition = "transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1)";
   workGrid.style.transform = "translate3d(" + carouselOffset + "px, 0, 0)";
   setTimeout(function () {
     workGrid.style.transition = "";
+    isSnappingCarousel = false;
+    carouselLastTime = 0;
   }, 360);
 }
 
