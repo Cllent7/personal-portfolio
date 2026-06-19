@@ -1,3 +1,5 @@
+const playableHubUrl = "https://github.com/Cllent7/Cllent_Completed_projects";
+
 const projects = [
   {
     id: "element-knight",
@@ -8,6 +10,8 @@ const projects = [
     period: "Unity 2022 LTS",
     award: "核心作品",
     priority: "core",
+    category: "personal",
+    playLabel: "试玩构建合集",
     summary:
       "以元素反应与随机成长为核心的 2D Roguelike 动作射击作品，围绕战斗反馈、关卡生成与长期可扩展内容结构展开。",
     contribution:
@@ -47,7 +51,8 @@ const projects = [
     ],
     video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/element-knight.mp4",
     videoFallback: "./assets/videos/element-knight.mp4",
-    link: "https://github.com/cllent/ElementKnight"
+    link: "https://github.com/cllent/ElementKnight",
+    playLink: playableHubUrl
   },
   {
     id: "vr-room",
@@ -58,6 +63,8 @@ const projects = [
     period: "PICO / Unity VR",
     award: "重点作品",
     priority: "featured",
+    category: "personal",
+    playLabel: "试玩构建合集",
     summary:
       "将 VR 沉浸空间、自然语音交互与 AI 心理支持流程结合的疗愈型体验，强调真实表达、陪伴式反馈与空间氛围设计。",
     contribution:
@@ -98,7 +105,8 @@ const projects = [
     ],
     video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/vr-room.mp4",
     videoFallback: "./assets/videos/vr-room.mp4",
-    link: "https://github.com/cllent/VR_Psychological_Room"
+    link: "https://github.com/cllent/VR_Psychological_Room",
+    playLink: playableHubUrl
   },
   {
     id: "physics-illusion",
@@ -109,6 +117,8 @@ const projects = [
     period: "PC / Unity 3D",
     award: "教育仿真",
     priority: "normal",
+    category: "personal",
+    playLabel: "试玩构建合集",
     summary:
       "面向课堂场景的 3D 交互式物理实验仿真软件，把抽象公式与危险或难以复现实验转化为可观察、可操作、可验证的体验。",
     contribution:
@@ -139,7 +149,8 @@ const projects = [
     ],
     video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/physics-illusion.mp4",
     videoFallback: "./assets/videos/physics-illusion.mp4",
-    link: "https://github.com/cllent/Journey-through-the-Physical-Illusion"
+    link: "https://github.com/cllent/Journey-through-the-Physical-Illusion",
+    playLink: playableHubUrl
   },
   {
     id: "wisdom-strength",
@@ -150,6 +161,8 @@ const projects = [
     period: "省级优秀奖",
     award: "省级优秀奖",
     priority: "normal",
+    category: "personal",
+    playLabel: "试玩构建合集",
     summary:
       "72 小时 GameJam 双人合作解谜作品，以力量与智慧角色的非对称能力配合为主题，兼顾剧情推进与关卡协作。",
     contribution:
@@ -186,7 +199,8 @@ const projects = [
     ],
     video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/wisdom-strength.mp4",
     videoFallback: "./assets/videos/wisdom-strength.mp4",
-    link: "https://github.com/cllent/The-Great-Escape-of-Wisdom-and-Strength"
+    link: "https://github.com/cllent/The-Great-Escape-of-Wisdom-and-Strength",
+    playLink: playableHubUrl
   },
   {
     id: "justice-raid",
@@ -197,6 +211,8 @@ const projects = [
     period: "CMIT 国赛三等奖",
     award: "CMIT 国赛三等奖",
     priority: "normal",
+    category: "personal",
+    playLabel: "试玩构建合集",
     summary:
       "第一人称 3D 生存射击作品，围绕有限资源、僵尸追击与场景压迫感构建高强度战斗节奏。",
     contribution:
@@ -238,7 +254,8 @@ const projects = [
     ],
     video: "https://cllent-personal-portfolic.oss-cn-beijing.aliyuncs.com/Video/justice-raid.mp4",
     videoFallback: "./assets/videos/justice-raid.mp4",
-    link: "https://github.com/cllent/The-Justice-Raid-of-the-Abandoned-Factory"
+    link: "https://github.com/cllent/The-Justice-Raid-of-the-Abandoned-Factory",
+    playLink: playableHubUrl
   }
 ];
 
@@ -248,6 +265,9 @@ const views = {
   profile: document.querySelector("#profileView")
 };
 
+const featuredProject = document.querySelector("#featuredProject");
+const showcaseRail = document.querySelector("#showcaseRail");
+const mobileProjectFeed = document.querySelector("#mobileProjectFeed");
 const workGrid = document.querySelector("#workGrid");
 const workViewport = document.querySelector("#workViewport");
 const detailPanel = document.querySelector("#detailPanel");
@@ -286,6 +306,116 @@ function activateView(name, origin) {
 
 function renderTags(tags) {
   return tags.map((tag) => `<span>${tag}</span>`).join("");
+}
+
+function projectCategoryLabel(project) {
+  return project.category === "commercial" ? "Commercial Project" : "Personal / Academic Project";
+}
+
+function projectActionMarkup(project, compact = false) {
+  const playText = compact ? "试玩" : project.playLabel || "打开可试玩版本";
+  return `
+    <div class="project-actions">
+      <a href="${project.playLink || playableHubUrl}" target="_blank" rel="noreferrer">${playText}</a>
+      <a href="${project.link}" target="_blank" rel="noreferrer">${compact ? "源码" : "打开 GitHub README"}</a>
+    </div>
+  `;
+}
+
+function renderHomeShowcase() {
+  const primary = projects.find((project) => project.priority === "core") || projects[0];
+  const featured = projects.find((project) => project.priority === "featured");
+  const orderedProjects = projects
+    .slice()
+    .sort((a, b) => cardOrder.indexOf(a.id) - cardOrder.indexOf(b.id));
+
+  featuredProject.innerHTML = `
+    <button class="feature-case-media" type="button" data-project="${primary.id}" style="--feature-bg:url(${primary.image})">
+      <span>${primary.award}</span>
+    </button>
+    <div class="feature-case-copy">
+      <p class="kicker">Featured Case</p>
+      <h2>${primary.title}</h2>
+      <p>${primary.summary}</p>
+      <div class="meta-row">
+        <span>${projectCategoryLabel(primary)}</span>
+        <span>${primary.type}</span>
+        <span>${primary.period}</span>
+      </div>
+      ${projectActionMarkup(primary)}
+    </div>
+  `;
+
+  const railItems = [
+    featured,
+    {
+      title: "可试玩构建合集",
+      award: "Playable Builds",
+      summary: "集中收纳作品集中可直接下载或打包试玩的版本，让招聘方和面试官能从展示页继续进入真实体验。",
+      tags: ["GitHub", "Builds", "Playable", "Portfolio"],
+      href: playableHubUrl
+    }
+  ].filter(Boolean);
+
+  showcaseRail.innerHTML = railItems
+    .map((project) => {
+      const cardContent = `
+        <span class="rail-label">${project.award}</span>
+        <h3>${project.title}</h3>
+        <p>${project.summary}</p>
+        <div class="card-tags">${renderTags(project.tags.slice(0, 4))}</div>
+      `;
+
+      if (project.href) {
+        return `
+          <a class="rail-card" href="${project.href}" target="_blank" rel="noreferrer">
+            ${cardContent}
+          </a>
+        `;
+      }
+
+      return `
+        <button class="rail-card" type="button" data-project="${project.id}">
+          ${cardContent}
+        </button>
+      `;
+    })
+    .join("");
+
+  mobileProjectFeed.innerHTML = `
+    <div class="mobile-feed-heading">
+      <p class="kicker">Selected Work</p>
+      <h2>先看代表作，再看完整项目列表。</h2>
+      <a href="${playableHubUrl}" target="_blank" rel="noreferrer">打开可试玩构建合集</a>
+    </div>
+    <div class="mobile-feature-stack">
+      ${orderedProjects
+        .map(
+          (project) => `
+            <button class="mobile-project-card ${project.priority === "core" ? "is-core" : project.priority === "featured" ? "is-featured" : ""}" type="button" data-project="${project.id}">
+              <img src="${project.image}" alt="${project.title} 项目封面" loading="lazy" />
+              <span>${project.award}</span>
+              <h3>${project.title}</h3>
+              <p>${project.summary}</p>
+              <div class="mobile-card-footer">
+                <small>${project.type}</small>
+                <strong>查看案例</strong>
+              </div>
+            </button>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+
+  document.querySelectorAll("[data-project]").forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      const projectId = event.currentTarget.dataset.project;
+      if (projectId) {
+        openProjectById(projectId, event.currentTarget);
+      }
+    });
+  });
 }
 
 function mediaMarkup(project, className) {
@@ -435,7 +565,7 @@ function renderDetail(project) {
           <span>${project.award}</span>
         </div>
         <div class="tag-row">${renderTags(project.tags)}</div>
-        <a class="repo-link" href="${project.link}" target="_blank" rel="noreferrer">打开 GitHub README</a>
+        ${projectActionMarkup(project)}
       </div>
     </div>
 
@@ -505,6 +635,7 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
+renderHomeShowcase();
 renderWorkCards();
 
 let carouselOffset = 0;
