@@ -1,4 +1,5 @@
 const playableHubUrl = "https://github.com/Cllent7/Cllent_Completed_projects";
+const playableHubImage = "./assets/images/optimized/playable-builds-cover.webp";
 
 const projects = [
   {
@@ -504,7 +505,7 @@ function renderHomeShowcase() {
       award: "Playable Builds",
       summary: "集中收纳作品集中可直接下载或打包试玩的版本，让招聘方和面试官能从展示页继续进入真实体验。",
       tags: ["GitHub", "Builds", "Playable", "Portfolio"],
-      image: primary.image,
+      image: playableHubImage,
       href: playableHubUrl
     }
   ].filter(Boolean);
