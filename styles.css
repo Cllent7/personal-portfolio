@@ -1306,6 +1306,16 @@ img {
     0 0 0 1px rgba(98, 230, 211, 0.16);
 }
 
+.detail-gallery-viewport.is-contain .gallery-item {
+  flex-basis: clamp(220px, 18vw, 300px);
+}
+
+.detail-gallery-viewport.is-contain .gallery-item img {
+  height: clamp(340px, 38vw, 520px);
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.28);
+}
+
 .repo-link {
   display: inline-flex;
   width: fit-content;

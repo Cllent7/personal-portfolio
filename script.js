@@ -38,6 +38,7 @@ const projects = [
     image: "./assets/images/optimized/wanlv-lake-cover.webp",
     adminImage: "./assets/images/optimized/wanlv-lake-admin.webp",
     hideVideoPlaceholder: true,
+    galleryFit: "contain",
     gallery: [
       "./assets/images/optimized/wanlv-lake-gallery-01.webp",
       "./assets/images/optimized/wanlv-lake-gallery-02.webp",
@@ -53,6 +54,57 @@ const projects = [
     ],
     link: "https://github.com/Cllent7/Wanlv-Lake-Project-WebGL-Server",
     playLink: "https://github.com/Cllent7/Wanlv-Lake-Project-WebGL-2"
+  },
+  {
+    id: "plane-rush",
+    title: "飞机合成冲刺",
+    repo: "Douyin Mini Game Commercial Project",
+    type: "Douyin Mini Game / Casual Runner",
+    role: "商业项目 / 小游戏玩法与平台接入",
+    period: "抖音小游戏 / Cocos Creator",
+    award: "核心商业作品",
+    priority: "core-commercial",
+    category: "commercial",
+    playLabel: "抖音开放平台",
+    sourceLabel: "平台能力文档",
+    summary:
+      "面向抖音小游戏平台的竖屏休闲商业项目，围绕飞机合成、跑酷闯关、奖励弹窗、签到转盘与广告收益链路构建完整移动端玩法体验。",
+    contribution:
+      "负责核心玩法实现、移动端 UI 流程、广告激励入口、平台调试与上线适配相关工作，配合抖音开放平台数据观察点击率、ECPM 与广告收入表现。",
+    highlights: [
+      "实现飞机队列推进、倍率奖励、关卡结算、签到、转盘和免广告等商业化玩法入口。",
+      "接入抖音小游戏运行环境，在开发者工具中完成真机模拟、广告 Banner 调用与平台侧调试。",
+      "结合开放平台收益数据观察广告请求、曝光、点击率、ECPM 与分成收入，为后续调优提供依据。"
+    ],
+    tags: ["Commercial", "Douyin Mini Game", "Cocos", "Mobile UI", "Ads", "Monetization"],
+    stack: [
+      ["Engine", "Cocos Creator / JavaScript / 抖音小游戏适配"],
+      ["Gameplay", "合成成长 / 跑酷闯关 / 奖励结算 / 关卡推进"],
+      ["Platform", "抖音开发者工具 / 广告 Banner / 流量主数据"],
+      ["Commercial", "激励入口 / 签到转盘 / 收益数据观察 / 移动端发布"]
+    ],
+    systems: [
+      "核心玩法系统：以飞机合成和道路推进为主线，结合障碍、倍率门和敌方单位形成轻量闯关循环。",
+      "商业化系统：围绕免广告、转盘、签到、奖励领取等入口组织用户留存和广告触达。",
+      "平台接入系统：在抖音小游戏环境中处理模拟器调试、Banner 展示、开发工具日志与发布适配。",
+      "数据反馈系统：通过开放平台观察广告请求、曝光、点击率、ECPM 与分成收入，辅助后续运营判断。"
+    ],
+    image: "./assets/images/optimized/plane-rush-cover.webp",
+    specialImage: "./assets/images/optimized/plane-rush-revenue.webp",
+    specialLabel: "Revenue / Platform Data",
+    specialTitle: "收益数据特别展示",
+    specialDescription:
+      "该页面展示抖音开放平台流量主数据，包括广告请求、曝光、点击、点击率、ECPM 与分成收入，用于观察商业化链路表现。",
+    hideVideoPlaceholder: true,
+    gallery: [
+      "./assets/images/optimized/plane-rush-gallery-01.webp",
+      "./assets/images/optimized/plane-rush-gallery-02.webp",
+      "./assets/images/optimized/plane-rush-gallery-03.webp",
+      "./assets/images/optimized/plane-rush-gallery-04.webp",
+      "./assets/images/optimized/plane-rush-gallery-05.webp",
+      "./assets/images/optimized/plane-rush-gallery-06.webp"
+    ],
+    playLink: "https://developer.open-douyin.com/"
   },
   {
     id: "element-knight",
@@ -326,7 +378,7 @@ const workGrid = document.querySelector("#workGrid");
 const workViewport = document.querySelector("#workViewport");
 const detailPanel = document.querySelector("#detailPanel");
 const transitionFlare = document.querySelector("#transitionFlare");
-const cardOrder = ["wanlv-lake", "vr-room", "physics-illusion", "element-knight", "wisdom-strength", "justice-raid"];
+const cardOrder = ["wanlv-lake", "plane-rush", "vr-room", "physics-illusion", "element-knight", "wisdom-strength", "justice-raid"];
 let currentFilter = "all";
 
 function getProjectVideoSource(project) {
@@ -372,7 +424,11 @@ function projectActionMarkup(project, compact = false) {
   return `
     <div class="project-actions">
       <a href="${project.playLink || playableHubUrl}" target="_blank" rel="noreferrer">${playText}</a>
-      <a href="${project.link}" target="_blank" rel="noreferrer">${compact ? "源码" : project.sourceLabel || "打开 GitHub README"}</a>
+      ${
+        project.link
+          ? `<a href="${project.link}" target="_blank" rel="noreferrer">${compact ? "源码" : project.sourceLabel || "打开 GitHub README"}</a>`
+          : ""
+      }
       ${
         project.secondaryLink
           ? `<a href="${project.secondaryLink}" target="_blank" rel="noreferrer">${project.secondaryLabel || "更多仓库"}</a>`
@@ -526,7 +582,7 @@ function galleryMarkup(project) {
   const loopGallery = [...project.gallery, ...project.gallery];
 
   return `
-    <div class="detail-gallery-viewport" id="detailGalleryViewport" aria-label="${project.title} 演示图集">
+    <div class="detail-gallery-viewport ${project.galleryFit === "contain" ? "is-contain" : ""}" id="detailGalleryViewport" aria-label="${project.title} 演示图集">
       <div class="detail-gallery-track" id="detailGalleryTrack">
         ${loopGallery
           .map(
@@ -587,19 +643,24 @@ function videoMarkup(project) {
   `;
 }
 
-function adminShowcaseMarkup(project) {
-  if (!project.adminImage) {
+function specialShowcaseMarkup(project) {
+  const image = project.specialImage || project.adminImage;
+
+  if (!image) {
     return "";
   }
 
   return `
     <div class="admin-showcase-section">
       <div>
-        <p class="kicker">Backend / Admin Panel</p>
-        <h3>管理端特别展示</h3>
-        <p>该界面用于维护展馆模块的视频、图片、文本和历史素材，体现我在商业项目中负责的后端与内容管理链路。</p>
+        <p class="kicker">${project.specialLabel || "Backend / Admin Panel"}</p>
+        <h3>${project.specialTitle || "管理端特别展示"}</h3>
+        <p>${
+          project.specialDescription ||
+          "该界面用于维护展馆模块的视频、图片、文本和历史素材，体现我在商业项目中负责的后端与内容管理链路。"
+        }</p>
       </div>
-      <img src="${project.adminImage}" alt="${project.title} 管理端页面" loading="lazy" />
+      <img src="${image}" alt="${project.title} 特别展示图" loading="lazy" />
     </div>
   `;
 }
@@ -705,7 +766,7 @@ function renderDetail(project) {
       <section class="detail-section media-section">
         <h3>${project.video ? "视频与演示图" : "演示图集"}</h3>
         ${videoMarkup(project)}
-        ${adminShowcaseMarkup(project)}
+        ${specialShowcaseMarkup(project)}
         <div class="gallery-strip">${galleryMarkup(project)}</div>
       </section>
     </div>
