@@ -353,6 +353,7 @@ function renderHomeShowcase() {
       award: "Playable Builds",
       summary: "集中收纳作品集中可直接下载或打包试玩的版本，让招聘方和面试官能从展示页继续进入真实体验。",
       tags: ["GitHub", "Builds", "Playable", "Portfolio"],
+      image: primary.image,
       href: playableHubUrl
     }
   ].filter(Boolean);
@@ -368,14 +369,14 @@ function renderHomeShowcase() {
 
       if (project.href) {
         return `
-          <a class="rail-card" href="${project.href}" target="_blank" rel="noreferrer">
+          <a class="rail-card" href="${project.href}" target="_blank" rel="noreferrer" style="--rail-bg:url(${project.image})">
             ${cardContent}
           </a>
         `;
       }
 
       return `
-        <button class="rail-card" type="button" data-project="${project.id}">
+        <button class="rail-card" type="button" data-project="${project.id}" style="--rail-bg:url(${project.image})">
           ${cardContent}
         </button>
       `;
@@ -385,7 +386,6 @@ function renderHomeShowcase() {
   mobileProjectFeed.innerHTML = `
     <div class="mobile-feed-heading">
       <p class="kicker">Selected Work</p>
-      <h2>先看代表作，再看完整项目列表。</h2>
       <a href="${playableHubUrl}" target="_blank" rel="noreferrer">打开可试玩构建合集</a>
     </div>
     <div class="mobile-feature-stack">
