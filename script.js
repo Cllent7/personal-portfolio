@@ -57,45 +57,47 @@ const projects = [
   },
   {
     id: "plane-rush",
-    title: "飞机合成冲刺",
-    repo: "Douyin Mini Game Commercial Project",
-    type: "Douyin Mini Game / Casual Runner",
-    role: "商业项目 / 小游戏玩法与平台接入",
-    period: "抖音小游戏 / Cocos Creator",
-    award: "核心商业作品",
-    priority: "core-commercial",
+    title: "一枪就搞定",
+    repo: "Get-it-done-with-one-shot",
+    type: "Douyin Mini Game / IAA Runner Shooter",
+    role: "核心开发 / AI 工具整合 / 广告变现 / 上线运维",
+    period: "Cocos Creator 3.6.1 / 抖音小游戏",
+    award: "商业项目",
+    priority: "featured-commercial",
     category: "commercial",
-    playLabel: "抖音开放平台",
-    sourceLabel: "平台能力文档",
+    playLabel: "打开项目仓库",
+    sourceLabel: "查看 GitHub README",
     summary:
-      "面向抖音小游戏平台的竖屏休闲商业项目，围绕飞机合成、跑酷闯关、奖励弹窗、签到转盘与广告收益链路构建完整移动端玩法体验。",
+      "已上架抖音平台的竖屏休闲动作小游戏，以跑酷、射击和数学门合并为核心玩法，通过 IAA 广告变现模型实现商业盈利。",
     contribution:
-      "负责核心玩法实现、移动端 UI 流程、广告激励入口、平台调试与上线适配相关工作，配合抖音开放平台数据观察点击率、ECPM 与广告收入表现。",
+      "承担核心开发、AI 工具整合、广告变现和上线运维的全流程工作，完成战斗、武器、数学门、关卡、UI、广告 SDK、转化追踪、资源优化与平台发布。",
     highlights: [
-      "实现飞机队列推进、倍率奖励、关卡结算、签到、转盘和免广告等商业化玩法入口。",
-      "接入抖音小游戏运行环境，在开发者工具中完成真机模拟、广告 Banner 调用与平台侧调试。",
-      "结合开放平台收益数据观察广告请求、曝光、点击率、ECPM 与分成收入，为后续调优提供依据。"
+      "实现跑酷推进、数学运算门、6 种武器、5 类敌人、7 类陷阱与 15 个手工关卡加随机关卡生成。",
+      "接入 uniSdk 多平台广告 SDK，覆盖 Banner、激励视频、插屏和原生广告，并设计启动保护、冷却机制与分 UI 配置。",
+      "集成巨量引擎转化追踪 API，上报激活、关键行为、广告变现、次留和页面浏览等数据，用于买量 ROI 和运营判断。"
     ],
-    tags: ["Commercial", "Douyin Mini Game", "Cocos", "Mobile UI", "Ads", "Monetization"],
+    tags: ["Commercial", "Douyin Mini Game", "Cocos Creator", "TypeScript", "IAA", "Monetization"],
     stack: [
-      ["Engine", "Cocos Creator / JavaScript / 抖音小游戏适配"],
-      ["Gameplay", "合成成长 / 跑酷闯关 / 奖励结算 / 关卡推进"],
-      ["Platform", "抖音开发者工具 / 广告 Banner / 流量主数据"],
-      ["Commercial", "激励入口 / 签到转盘 / 收益数据观察 / 移动端发布"]
+      ["Engine", "Cocos Creator 3.6.1 / TypeScript / JavaScript SDK 集成"],
+      ["Gameplay", "跑酷射击 / 数学门合并 / 武器系统 / 随机关卡"],
+      ["Performance", "GPU Instancing / 对象池 / 自定义碰撞 / 分包加载"],
+      ["Commercial", "uniSdk / 巨量引擎 API / IAA 广告变现 / 已上架运营"]
     ],
     systems: [
-      "核心玩法系统：以飞机合成和道路推进为主线，结合障碍、倍率门和敌方单位形成轻量闯关循环。",
-      "商业化系统：围绕免广告、转盘、签到、奖励领取等入口组织用户留存和广告触达。",
-      "平台接入系统：在抖音小游戏环境中处理模拟器调试、Banner 展示、开发工具日志与发布适配。",
-      "数据反馈系统：通过开放平台观察广告请求、曝光、点击率、ECPM 与分成收入，辅助后续运营判断。"
+      "核心玩法系统：玩家队伍自动推进，穿过 +、-、×、÷ 数学门改变人数，并通过武器和路线选择影响最终决战。",
+      "战斗与关卡系统：实现玩家状态机、敌人 AI 状态机、武器弹道、陷阱挑战、15 个手工关卡和程序化随机生成关卡。",
+      "广告变现系统：接入 Banner、激励视频、插屏、原生广告，结合启动保护、60 秒冷却和服务端强弹概率配置。",
+      "性能与发布系统：使用 GPU Instancing、对象池、自定义碰撞、图片/音频压缩和分包加载，完成抖音小游戏上架与后续维护。"
     ],
     image: "./assets/images/optimized/plane-rush-cover.webp",
+    detailMediaFit: "phone",
     specialImage: "./assets/images/optimized/plane-rush-revenue.webp",
     specialLabel: "Revenue / Platform Data",
     specialTitle: "收益数据特别展示",
     specialDescription:
-      "该页面展示抖音开放平台流量主数据，包括广告请求、曝光、点击、点击率、ECPM 与分成收入，用于观察商业化链路表现。",
+      "该页面展示抖音开放平台流量主数据，包括广告请求、曝光、点击率、ECPM 与分成收入，用于观察 IAA 广告变现链路表现。",
     hideVideoPlaceholder: true,
+    galleryFit: "contain",
     gallery: [
       "./assets/images/optimized/plane-rush-gallery-01.webp",
       "./assets/images/optimized/plane-rush-gallery-02.webp",
@@ -104,7 +106,8 @@ const projects = [
       "./assets/images/optimized/plane-rush-gallery-05.webp",
       "./assets/images/optimized/plane-rush-gallery-06.webp"
     ],
-    playLink: "https://developer.open-douyin.com/"
+    link: "https://github.com/Cllent7/Get-it-done-with-one-shot",
+    playLink: "https://github.com/Cllent7/Get-it-done-with-one-shot"
   },
   {
     id: "element-knight",
@@ -421,11 +424,12 @@ function projectCategoryLabel(project) {
 
 function projectActionMarkup(project, compact = false) {
   const playText = compact ? "试玩" : project.playLabel || "打开可试玩版本";
+  const primaryLink = project.playLink || playableHubUrl;
   return `
     <div class="project-actions">
-      <a href="${project.playLink || playableHubUrl}" target="_blank" rel="noreferrer">${playText}</a>
+      <a href="${primaryLink}" target="_blank" rel="noreferrer">${playText}</a>
       ${
-        project.link
+        project.link && project.link !== primaryLink
           ? `<a href="${project.link}" target="_blank" rel="noreferrer">${compact ? "源码" : project.sourceLabel || "打开 GitHub README"}</a>`
           : ""
       }
@@ -465,18 +469,23 @@ function bindProjectTriggers() {
 
 function renderHomeShowcase() {
   const filteredProjects = visibleProjects();
+  const personalCore = filteredProjects.find((project) => project.priority === "core" && project.category === "personal");
+  const commercialCore = filteredProjects.find((project) => project.priority === "core-commercial");
   const primary =
-    filteredProjects.find((project) => project.priority === "core-commercial") ||
-    filteredProjects.find((project) => project.priority === "core") ||
-    filteredProjects[0];
-  const secondaryProjects = filteredProjects.filter((project) => project.id !== primary.id).slice(0, 1);
+    currentFilter === "all"
+      ? personalCore || filteredProjects[0]
+      : commercialCore || personalCore || filteredProjects[0];
+  const secondaryProjects =
+    currentFilter === "all" && commercialCore && commercialCore.id !== primary.id
+      ? [commercialCore]
+      : filteredProjects.filter((project) => project.id !== primary.id).slice(0, 1);
 
   featuredProject.innerHTML = `
     <button class="feature-case-media" type="button" data-project="${primary.id}" style="--feature-bg:url(${primary.image})">
       <span>${primary.award}</span>
     </button>
     <div class="feature-case-copy">
-      <p class="kicker">Featured Case</p>
+      <p class="kicker">${currentFilter === "all" ? "Core Personal Case" : "Featured Case"}</p>
       <h2>${primary.title}</h2>
       <p>${primary.summary}</p>
       <div class="meta-row">
@@ -667,7 +676,8 @@ function specialShowcaseMarkup(project) {
 
 function renderWorkCards() {
   const orderedProjects = visibleProjects();
-  const loopProjects = [...orderedProjects, ...orderedProjects];
+  const repeatCount = Math.max(2, Math.ceil(8 / Math.max(orderedProjects.length, 1)));
+  const loopProjects = Array.from({ length: repeatCount }, () => orderedProjects).flat();
 
   workGrid.innerHTML = loopProjects
     .map((project, index) => {
@@ -711,7 +721,7 @@ function renderWorkCards() {
 function renderDetail(project) {
   detailPanel.innerHTML = `
     <div class="detail-hero">
-      <div class="detail-media">
+      <div class="detail-media ${project.detailMediaFit === "phone" ? "is-phone-cover" : ""}">
         ${mediaMarkup(project, "media-placeholder")}
         <span class="scanline"></span>
         <span class="corner-mark corner-a"></span>
