@@ -440,6 +440,43 @@ img {
   display: none;
 }
 
+.category-switch {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(10, 13, 21, 0.68);
+  backdrop-filter: blur(18px);
+}
+
+.category-switch button {
+  min-height: 38px;
+  padding: 0 15px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--muted);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 900;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.category-switch button:hover,
+.category-switch button.is-active {
+  border-color: rgba(98, 230, 211, 0.45);
+  color: var(--text);
+  background: rgba(98, 230, 211, 0.12);
+}
+
 .work-viewport {
   position: relative;
   width: 100%;
@@ -1104,6 +1141,39 @@ img {
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
 }
 
+.admin-showcase-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.55fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  margin: 18px 0;
+  padding: 18px;
+  border: 1px solid rgba(98, 230, 211, 0.22);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(98, 230, 211, 0.075), rgba(245, 182, 91, 0.045)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.admin-showcase-section h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.admin-showcase-section p:not(.kicker) {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.admin-showcase-section img {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.22);
+}
+
 .video-placeholder::before {
   position: absolute;
   inset: -40%;
@@ -1467,6 +1537,19 @@ img {
     display: none;
   }
 
+  .category-switch {
+    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 18px;
+    overflow-x: auto;
+    border-radius: var(--radius);
+    backdrop-filter: none;
+  }
+
+  .category-switch button {
+    flex: 0 0 auto;
+  }
+
   .mobile-project-feed {
     display: grid;
     gap: 16px;
@@ -1600,6 +1683,11 @@ img {
 
   .detail-section {
     padding: 18px;
+  }
+
+  .admin-showcase-section {
+    grid-template-columns: 1fr;
+    padding: 14px;
   }
 
   .name-button,

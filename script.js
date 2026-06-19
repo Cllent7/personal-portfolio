@@ -2,6 +2,59 @@ const playableHubUrl = "https://github.com/Cllent7/Cllent_Completed_projects";
 
 const projects = [
   {
+    id: "wanlv-lake",
+    title: "万绿湖仿真展馆",
+    repo: "Wanlv-Lake-Project-WebGL-Server",
+    type: "Unity WebGL Exhibition / Backend CMS",
+    role: "商业项目 / 后端开发与内容管理支持",
+    period: "Unity WebGL / Web 后台",
+    award: "核心商业作品",
+    priority: "core-commercial",
+    category: "commercial",
+    playLabel: "打开前端仓库",
+    sourceLabel: "打开后端仓库",
+    summary:
+      "面向万绿湖主题内容展示的 WebGL 仿真展馆项目，结合三维展厅、互动模块、后台内容管理与多媒体资料维护，支持展馆内容持续更新。",
+    contribution:
+      "主要负责后端与管理端相关工作，围绕模块内容、视频资料、轮播图文、历史图片选择与资源维护建立管理流程，为 WebGL 前端展馆提供可配置内容支撑。",
+    highlights: [
+      "搭建面向展馆模块的后台管理流程，支持视频、图片、短文本与长文本等内容维护。",
+      "配合 Unity WebGL 前端展示需求，组织万绿湖水体、动植物、历史、工程与互动小游戏等内容结构。",
+      "将商业项目按可维护、可扩展、可交付的方式整理为案例，突出真实项目协作与后端职责。"
+    ],
+    tags: ["Commercial", "Unity WebGL", "Backend", "CMS", "Admin", "Content"],
+    stack: [
+      ["Role", "后端开发 / 管理端内容维护 / 前后端联调支持"],
+      ["Frontend", "Unity WebGL / 三维展馆 / 互动展示模块"],
+      ["Backend", "内容管理接口 / 文件资源管理 / 模块化数据维护"],
+      ["Delivery", "商业项目协作 / 展馆内容配置 / WebGL 发布支持"]
+    ],
+    systems: [
+      "后台内容系统：围绕展馆模块维护视频、图片、说明文本与历史素材，降低内容更新成本。",
+      "模块数据组织：按大坝选址、水质漫游、动植物、古遗迹、水利工程和互动小游戏等主题组织展示数据。",
+      "资源管理流程：管理端支持图片更换、历史素材选择、视频上传与模块内容刷新。",
+      "前后端协作链路：后端内容结构服务于 Unity WebGL 前端，让三维展馆展示内容可持续迭代。"
+    ],
+    image: "./assets/images/optimized/wanlv-lake-cover.webp",
+    adminImage: "./assets/images/optimized/wanlv-lake-admin.webp",
+    hideVideoPlaceholder: true,
+    gallery: [
+      "./assets/images/optimized/wanlv-lake-gallery-01.webp",
+      "./assets/images/optimized/wanlv-lake-gallery-02.webp",
+      "./assets/images/optimized/wanlv-lake-gallery-03.webp",
+      "./assets/images/optimized/wanlv-lake-gallery-04.webp",
+      "./assets/images/optimized/wanlv-lake-gallery-05.webp",
+      "./assets/images/optimized/wanlv-lake-gallery-06.webp",
+      "./assets/images/optimized/wanlv-lake-gallery-07.webp",
+      "./assets/images/optimized/wanlv-lake-gallery-08.webp",
+      "./assets/images/optimized/wanlv-lake-gallery-10.webp",
+      "./assets/images/optimized/wanlv-lake-gallery-11.webp",
+      "./assets/images/optimized/wanlv-lake-gallery-12.webp"
+    ],
+    link: "https://github.com/Cllent7/Wanlv-Lake-Project-WebGL-Server",
+    playLink: "https://github.com/Cllent7/Wanlv-Lake-Project-WebGL-2"
+  },
+  {
     id: "element-knight",
     title: "万象回廊：元素",
     repo: "ElementKnight",
@@ -268,11 +321,13 @@ const views = {
 const featuredProject = document.querySelector("#featuredProject");
 const showcaseRail = document.querySelector("#showcaseRail");
 const mobileProjectFeed = document.querySelector("#mobileProjectFeed");
+const categorySwitch = document.querySelector("#categorySwitch");
 const workGrid = document.querySelector("#workGrid");
 const workViewport = document.querySelector("#workViewport");
 const detailPanel = document.querySelector("#detailPanel");
 const transitionFlare = document.querySelector("#transitionFlare");
-const cardOrder = ["vr-room", "physics-illusion", "element-knight", "wisdom-strength", "justice-raid"];
+const cardOrder = ["wanlv-lake", "vr-room", "physics-illusion", "element-knight", "wisdom-strength", "justice-raid"];
+let currentFilter = "all";
 
 function getProjectVideoSource(project) {
   return project.video || project.videoFallback || "";
@@ -317,17 +372,48 @@ function projectActionMarkup(project, compact = false) {
   return `
     <div class="project-actions">
       <a href="${project.playLink || playableHubUrl}" target="_blank" rel="noreferrer">${playText}</a>
-      <a href="${project.link}" target="_blank" rel="noreferrer">${compact ? "源码" : "打开 GitHub README"}</a>
+      <a href="${project.link}" target="_blank" rel="noreferrer">${compact ? "源码" : project.sourceLabel || "打开 GitHub README"}</a>
+      ${
+        project.secondaryLink
+          ? `<a href="${project.secondaryLink}" target="_blank" rel="noreferrer">${project.secondaryLabel || "更多仓库"}</a>`
+          : ""
+      }
     </div>
   `;
 }
 
-function renderHomeShowcase() {
-  const primary = projects.find((project) => project.priority === "core") || projects[0];
-  const featured = projects.find((project) => project.priority === "featured");
-  const orderedProjects = projects
+function orderedProjectsFor(projectList) {
+  return projectList
     .slice()
     .sort((a, b) => cardOrder.indexOf(a.id) - cardOrder.indexOf(b.id));
+}
+
+function visibleProjects() {
+  if (currentFilter === "all") {
+    return orderedProjectsFor(projects);
+  }
+
+  return orderedProjectsFor(projects.filter((project) => project.category === currentFilter));
+}
+
+function bindProjectTriggers() {
+  document.querySelectorAll(".feature-case-media, .rail-card[data-project], .mobile-project-card").forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      const projectId = event.currentTarget.dataset.project;
+      if (projectId) {
+        openProjectById(projectId, event.currentTarget);
+      }
+    });
+  });
+}
+
+function renderHomeShowcase() {
+  const filteredProjects = visibleProjects();
+  const primary =
+    filteredProjects.find((project) => project.priority === "core-commercial") ||
+    filteredProjects.find((project) => project.priority === "core") ||
+    filteredProjects[0];
+  const secondaryProjects = filteredProjects.filter((project) => project.id !== primary.id).slice(0, 1);
 
   featuredProject.innerHTML = `
     <button class="feature-case-media" type="button" data-project="${primary.id}" style="--feature-bg:url(${primary.image})">
@@ -347,7 +433,7 @@ function renderHomeShowcase() {
   `;
 
   const railItems = [
-    featured,
+    ...secondaryProjects,
     {
       title: "可试玩构建合集",
       award: "Playable Builds",
@@ -389,10 +475,10 @@ function renderHomeShowcase() {
       <a href="${playableHubUrl}" target="_blank" rel="noreferrer">打开可试玩构建合集</a>
     </div>
     <div class="mobile-feature-stack">
-      ${orderedProjects
+      ${filteredProjects
         .map(
           (project) => `
-            <button class="mobile-project-card ${project.priority === "core" ? "is-core" : project.priority === "featured" ? "is-featured" : ""}" type="button" data-project="${project.id}">
+            <button class="mobile-project-card ${project.priority === "core" || project.priority === "core-commercial" ? "is-core" : project.priority === "featured" ? "is-featured" : ""}" type="button" data-project="${project.id}">
               <img src="${project.image}" alt="${project.title} 项目封面" loading="lazy" />
               <span>${project.award}</span>
               <h3>${project.title}</h3>
@@ -408,14 +494,7 @@ function renderHomeShowcase() {
     </div>
   `;
 
-  document.querySelectorAll("[data-project]").forEach((trigger) => {
-    trigger.addEventListener("click", (event) => {
-      const projectId = event.currentTarget.dataset.project;
-      if (projectId) {
-        openProjectById(projectId, event.currentTarget);
-      }
-    });
-  });
+  bindProjectTriggers();
 }
 
 function mediaMarkup(project, className) {
@@ -495,6 +574,10 @@ function videoMarkup(project) {
       </div>`;
   }
 
+  if (project.hideVideoPlaceholder) {
+    return "";
+  }
+
   return `
     <div class="video-placeholder">
       <span class="play-core"></span>
@@ -504,10 +587,25 @@ function videoMarkup(project) {
   `;
 }
 
+function adminShowcaseMarkup(project) {
+  if (!project.adminImage) {
+    return "";
+  }
+
+  return `
+    <div class="admin-showcase-section">
+      <div>
+        <p class="kicker">Backend / Admin Panel</p>
+        <h3>管理端特别展示</h3>
+        <p>该界面用于维护展馆模块的视频、图片、文本和历史素材，体现我在商业项目中负责的后端与内容管理链路。</p>
+      </div>
+      <img src="${project.adminImage}" alt="${project.title} 管理端页面" loading="lazy" />
+    </div>
+  `;
+}
+
 function renderWorkCards() {
-  const orderedProjects = projects
-    .slice()
-    .sort((a, b) => cardOrder.indexOf(a.id) - cardOrder.indexOf(b.id));
+  const orderedProjects = visibleProjects();
   const loopProjects = [...orderedProjects, ...orderedProjects];
 
   workGrid.innerHTML = loopProjects
@@ -515,13 +613,17 @@ function renderWorkCards() {
       const background = project.image ? `url(${project.image})` : "none";
       const placeholderClass = project.image ? "" : "placeholder-card";
       const priorityClass =
-        project.priority === "core" ? "is-core" : project.priority === "featured" ? "is-featured" : "";
+        project.priority === "core" || project.priority === "core-commercial"
+          ? "is-core"
+          : project.priority === "featured"
+            ? "is-featured"
+            : "";
       const displayIndex = String((index % orderedProjects.length) + 1).padStart(2, "0");
 
       return `
         <button class="work-card ${placeholderClass} ${priorityClass}" type="button" data-project="${project.id}" style="--card-bg:${background}">
           <span class="work-card-index">${displayIndex}</span>
-          ${project.priority === "core" ? '<span class="priority-ribbon">核心项目</span>' : ""}
+          ${project.priority === "core" || project.priority === "core-commercial" ? `<span class="priority-ribbon">${project.award}</span>` : ""}
           ${project.priority === "featured" ? '<span class="priority-ribbon featured-ribbon">重点作品</span>' : ""}
           <div class="work-card-content">
             <span class="work-card-type">${project.type}</span>
@@ -601,8 +703,9 @@ function renderDetail(project) {
       </section>
 
       <section class="detail-section media-section">
-        <h3>视频与演示图</h3>
+        <h3>${project.video ? "视频与演示图" : "演示图集"}</h3>
         ${videoMarkup(project)}
+        ${adminShowcaseMarkup(project)}
         <div class="gallery-strip">${galleryMarkup(project)}</div>
       </section>
     </div>
@@ -779,6 +882,24 @@ workViewport.addEventListener("pointercancel", endCarouselDrag);
 
 measureCarousel();
 carouselFrame = requestAnimationFrame(animateCarousel);
+
+function refreshProjectViews() {
+  carouselOffset = 0;
+  renderHomeShowcase();
+  renderWorkCards();
+  measureCarousel();
+}
+
+if (categorySwitch) {
+  categorySwitch.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      currentFilter = button.dataset.filter || "all";
+      categorySwitch.querySelectorAll("button").forEach((item) => item.classList.remove("is-active"));
+      button.classList.add("is-active");
+      refreshProjectViews();
+    });
+  });
+}
 
 /* 手机端左右箭头按钮 */
 function getCardStep() {
