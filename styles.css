@@ -1343,6 +1343,18 @@ img {
   background: rgba(0, 0, 0, 0.28);
 }
 
+.detail-gallery-viewport.is-contain.is-widescreen .gallery-item {
+  flex-basis: clamp(280px, 26vw, 420px);
+}
+
+.detail-gallery-viewport.is-contain.is-widescreen .gallery-item img {
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.28);
+}
+
 .repo-link {
   display: inline-flex;
   width: fit-content;

@@ -40,6 +40,7 @@ const projects = [
     adminImage: "./assets/images/optimized/wanlv-lake-admin.webp",
     hideVideoPlaceholder: true,
     galleryFit: "contain",
+    galleryFrame: "widescreen",
     gallery: [
       "./assets/images/optimized/wanlv-lake-gallery-01.webp",
       "./assets/images/optimized/wanlv-lake-gallery-02.webp",
@@ -592,7 +593,7 @@ function galleryMarkup(project) {
   const loopGallery = [...project.gallery, ...project.gallery];
 
   return `
-    <div class="detail-gallery-viewport ${project.galleryFit === "contain" ? "is-contain" : ""}" id="detailGalleryViewport" aria-label="${project.title} 演示图集">
+    <div class="detail-gallery-viewport ${project.galleryFit === "contain" ? "is-contain" : ""} ${project.galleryFrame === "widescreen" ? "is-widescreen" : ""}" id="detailGalleryViewport" aria-label="${project.title} 演示图集">
       <div class="detail-gallery-track" id="detailGalleryTrack">
         ${loopGallery
           .map(

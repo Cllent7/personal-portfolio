@@ -5,7 +5,7 @@ Unity 开发作品集静态网站，部署于 GitHub Pages，展示游戏、VR�
 ## 在线访问
 
 ```text
-https://cllent.github.io/personal-portfolio/
+https://Cllent7.github.io/personal-portfolio/
 ```
 
 手机、电脑浏览器均可打开，面试官可以直接扫码访问。
@@ -32,7 +32,7 @@ http://127.0.0.1:8094/
 
 本项目为纯静态网站，无需构建步骤，直接从 main 分支根目录部署。
 
-1. 将仓库推送到 GitHub：`cllent/personal-portfolio`
+1. 将仓库推送到 GitHub：`Cllent7/personal-portfolio`
 2. 打开仓库 **Settings → Pages**
 3. **Build and deployment** 下：
    - **Source**: Deploy from a branch
